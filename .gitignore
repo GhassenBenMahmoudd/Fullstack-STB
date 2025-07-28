@@ -1,0 +1,13 @@
+# === ANGULAR ===
+frontend/**/node_modules
+frontend/**/dist
+
+# === .NET ===
+backend/**/bin
+backend/**/obj
+backend/.vs
+
+# === Général ===
+*.user
+*.log
+*.env
