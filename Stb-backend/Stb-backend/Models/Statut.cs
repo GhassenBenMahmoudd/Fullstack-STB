@@ -2,8 +2,6 @@
 {
     public enum Statut
     {
-        ACCEPTER,
-        REFUSER,
-        INFORMATIONS_MANQUANTES
+        ACCEPTER,REFUSER,INFORMATIONS_MANQUANTES
     }
 }

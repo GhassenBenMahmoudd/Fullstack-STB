@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using stb_backend.Data;
 
@@ -11,9 +12,11 @@ using stb_backend.Data;
 namespace stb_backend.Migrations
 {
     [DbContext(typeof(StbDbContext))]
-    partial class StbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250728212413_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,11 +43,14 @@ namespace stb_backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<Guid>("GUID")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("GUID")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("Honneur")
                         .HasColumnType("bit");
@@ -54,19 +60,21 @@ namespace stb_backend.Migrations
 
                     b.Property<string>("IdentiteDonneur")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<long?>("ManagerIdUser")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Message")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("Occasion")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Statut")
                         .IsRequired()
@@ -232,6 +240,11 @@ namespace stb_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdUser"));
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -254,9 +267,11 @@ namespace stb_backend.Migrations
 
                     b.HasKey("IdUser");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
 
-                    b.UseTptMappingStrategy();
+                    b.HasDiscriminator().HasValue("User");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("stb_backend.Domain.Employe", b =>
@@ -273,7 +288,9 @@ namespace stb_backend.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.ToTable("Employes", (string)null);
+                    b.ToTable("User");
+
+                    b.HasDiscriminator().HasValue("Employe");
                 });
 
             modelBuilder.Entity("stb_backend.Domain.Manager", b =>
@@ -285,7 +302,9 @@ namespace stb_backend.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.ToTable("Managers", (string)null);
+                    b.ToTable("User");
+
+                    b.HasDiscriminator().HasValue("Manager");
                 });
 
             modelBuilder.Entity("stb_backend.Domain.DeclarationCadeau", b =>
@@ -353,24 +372,6 @@ namespace stb_backend.Migrations
                     b.Navigation("DeclarationCorruption");
 
                     b.Navigation("DemandeConseil");
-                });
-
-            modelBuilder.Entity("stb_backend.Domain.Employe", b =>
-                {
-                    b.HasOne("stb_backend.Domain.User", null)
-                        .WithOne()
-                        .HasForeignKey("stb_backend.Domain.Employe", "IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("stb_backend.Domain.Manager", b =>
-                {
-                    b.HasOne("stb_backend.Domain.Employe", null)
-                        .WithOne()
-                        .HasForeignKey("stb_backend.Domain.Manager", "IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("stb_backend.Domain.DeclarationCadeau", b =>

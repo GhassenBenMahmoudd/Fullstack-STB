@@ -12,8 +12,8 @@ using stb_backend.Data;
 namespace stb_backend.Migrations
 {
     [DbContext(typeof(StbDbContext))]
-    [Migration("20250725100700_intialmigration")]
-    partial class intialmigration
+    [Migration("20250729113647_NomDeLaMigration")]
+    partial class NomDeLaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace stb_backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("stb_backend.Domain.DeclarationCadeaux", b =>
+            modelBuilder.Entity("stb_backend.Domain.DeclarationCadeau", b =>
                 {
                     b.Property<long>("IdCadeaux")
                         .ValueGeneratedOnAdd()
@@ -43,14 +43,11 @@ namespace stb_backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<string>("GUID")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<Guid>("GUID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Honneur")
                         .HasColumnType("bit");
@@ -60,18 +57,19 @@ namespace stb_backend.Migrations
 
                     b.Property<string>("IdentiteDonneur")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<long?>("ManagerIdUser")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Message")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Occasion")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Statut")
                         .IsRequired()
@@ -87,6 +85,8 @@ namespace stb_backend.Migrations
                     b.HasKey("IdCadeaux");
 
                     b.HasIndex("IdUser");
+
+                    b.HasIndex("ManagerIdUser");
 
                     b.ToTable("DeclarationsCadeaux");
                 });
@@ -227,97 +227,6 @@ namespace stb_backend.Migrations
                     b.ToTable("DocumentFile");
                 });
 
-            modelBuilder.Entity("stb_backend.Domain.Employe", b =>
-                {
-                    b.Property<long>("IdUser")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdUser"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<long?>("ManagerIdUser")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Matricule")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Nom")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("NumeroTelephone")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Prenom")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("IdUser");
-
-                    b.HasIndex("ManagerIdUser");
-
-                    b.ToTable("Employes");
-                });
-
-            modelBuilder.Entity("stb_backend.Domain.Manager", b =>
-                {
-                    b.Property<long>("IdUser")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdUser"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Matricule")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Nom")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("NumeroTelephone")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Prenom")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("IdUser");
-
-                    b.ToTable("Managers");
-                });
-
             modelBuilder.Entity("stb_backend.Domain.User", b =>
                 {
                     b.Property<long>("IdUser")
@@ -348,16 +257,51 @@ namespace stb_backend.Migrations
 
                     b.HasKey("IdUser");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
+
+                    b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("stb_backend.Domain.DeclarationCadeaux", b =>
+            modelBuilder.Entity("stb_backend.Domain.Employe", b =>
+                {
+                    b.HasBaseType("stb_backend.Domain.User");
+
+                    b.Property<string>("Matricule")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.ToTable("Employes", (string)null);
+                });
+
+            modelBuilder.Entity("stb_backend.Domain.Manager", b =>
+                {
+                    b.HasBaseType("stb_backend.Domain.Employe");
+
+                    b.Property<string>("Departement")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.ToTable("Managers", (string)null);
+                });
+
+            modelBuilder.Entity("stb_backend.Domain.DeclarationCadeau", b =>
                 {
                     b.HasOne("stb_backend.Domain.Employe", "Employe")
                         .WithMany("DeclarationsCadeaux")
                         .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("stb_backend.Domain.Manager", null)
+                        .WithMany("DeclarationCadeau")
+                        .HasForeignKey("ManagerIdUser");
 
                     b.Navigation("Employe");
                 });
@@ -394,7 +338,7 @@ namespace stb_backend.Migrations
                         .WithMany("DocumentFiles")
                         .HasForeignKey("DemandeConseilIdConseil");
 
-                    b.HasOne("stb_backend.Domain.DeclarationCadeaux", "DeclarationCadeaux")
+                    b.HasOne("stb_backend.Domain.DeclarationCadeau", "DeclarationCadeaux")
                         .WithMany("DocumentFiles")
                         .HasForeignKey("IdCadeaux")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -416,12 +360,23 @@ namespace stb_backend.Migrations
 
             modelBuilder.Entity("stb_backend.Domain.Employe", b =>
                 {
-                    b.HasOne("stb_backend.Domain.Manager", null)
-                        .WithMany("EquipeSupervise")
-                        .HasForeignKey("ManagerIdUser");
+                    b.HasOne("stb_backend.Domain.User", null)
+                        .WithOne()
+                        .HasForeignKey("stb_backend.Domain.Employe", "IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("stb_backend.Domain.DeclarationCadeaux", b =>
+            modelBuilder.Entity("stb_backend.Domain.Manager", b =>
+                {
+                    b.HasOne("stb_backend.Domain.Employe", null)
+                        .WithOne()
+                        .HasForeignKey("stb_backend.Domain.Manager", "IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("stb_backend.Domain.DeclarationCadeau", b =>
                 {
                     b.Navigation("DocumentFiles");
                 });
@@ -447,7 +402,7 @@ namespace stb_backend.Migrations
 
             modelBuilder.Entity("stb_backend.Domain.Manager", b =>
                 {
-                    b.Navigation("EquipeSupervise");
+                    b.Navigation("DeclarationCadeau");
                 });
 #pragma warning restore 612, 618
         }

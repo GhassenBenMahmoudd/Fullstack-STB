@@ -2,9 +2,6 @@
 {
     public enum TypeRelation
     {
-        PARTENAIRE,
-        FOURNISSEUR,
-        AUTRE
-
+        PARTENAIRE,FOURNISSEUR,AUTRE
     }
 }

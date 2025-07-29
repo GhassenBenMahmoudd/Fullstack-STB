@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using stb_backend.Domain;
+using stb_backend.DTOs;
 using stb_backend.Interfaces;
 
 namespace stb_backend.Controller
@@ -15,10 +16,32 @@ namespace stb_backend.Controller
             _service = service;
         }
 
+        // BONNE PRATIQUE : L'endpoint GET renvoie une liste de DTOs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DeclarationCadeau>>> GetAll()
+        public async Task<ActionResult<IEnumerable<DeclarationCadeauDto>>> GetAll()
         {
-            return Ok(await _service.GetAllAsync());
+            var cadeaux = await _service.GetAllAsync();
+
+            // On "mappe" (transforme) la liste d'entités en liste de DTOs
+            var cadeauxDto = cadeaux.Select(c => new DeclarationCadeauDto
+            {
+                IdCadeaux = c.IdCadeaux,
+                IdUser = c.IdUser,
+                GUID = c.GUID,
+                ValeurEstime = c.ValeurEstime,
+                IdentiteDonneur = c.IdentiteDonneur,
+                TypeRelation = c.TypeRelation.ToString(), // Conversion propre
+                Occasion = c.Occasion,
+                Honneur = c.Honneur,
+                DateDeclaration = c.DateDeclaration,
+                Message = c.Message,
+                Statut = c.Statut.ToString(), // Conversion propre
+                DateReceptionCadeaux = c.DateReceptionCadeaux,
+                Anonyme = c.Anonyme,
+                Description = c.Description
+            });
+
+            return Ok(cadeauxDto);
         }
 
         [HttpGet("{id}")]
@@ -28,28 +51,136 @@ namespace stb_backend.Controller
             if (item == null) return NotFound();
             return Ok(item);
         }
-
+        // BONNE PRATIQUE : L'endpoint POST reçoit un DTO de création
         [HttpPost]
-        public async Task<ActionResult<DeclarationCadeau>> Create([FromBody] DeclarationCadeau cadeau)
+        public async Task<ActionResult<DeclarationCadeauDto>> Create([FromBody] CreateDeclarationCadeauDto cadeauDto)
         {
-            var created = await _service.CreateAsync(cadeau);
-            return CreatedAtAction(nameof(GetById), new { id = created.IdCadeaux }, created);
+            // 1. Mapper le DTO en entité (cette partie est déjà correcte)
+            var cadeau = new DeclarationCadeau
+            {
+                GUID = Guid.NewGuid(),
+                DateDeclaration = DateTime.UtcNow,
+                IdUser = cadeauDto.IdUser,
+                ValeurEstime = cadeauDto.ValeurEstime,
+                IdentiteDonneur = cadeauDto.IdentiteDonneur,
+                TypeRelation = cadeauDto.TypeRelation,
+                Occasion = cadeauDto.Occasion,
+                Honneur = cadeauDto.Honneur,
+                Message = cadeauDto.Message,
+                Statut = cadeauDto.Statut,
+                DateReceptionCadeaux = cadeauDto.DateReceptionCadeaux,
+                Anonyme = cadeauDto.Anonyme,
+                Description = cadeauDto.Description
+            };
+
+            // 2. Créer l'entité dans la base de données
+            var createdCadeau = await _service.CreateAsync(cadeau);
+
+            // 3. Mapper l'entité créée vers le DTO de réponse (LA CORRECTION EST ICI)
+            var createdCadeauDto = new DeclarationCadeauDto
+            {
+                // Assurez-vous de remplir TOUS les champs
+                IdCadeaux = createdCadeau.IdCadeaux,
+                IdUser = createdCadeau.IdUser,
+                GUID = createdCadeau.GUID,
+                ValeurEstime = createdCadeau.ValeurEstime,
+                IdentiteDonneur = createdCadeau.IdentiteDonneur,
+                TypeRelation = createdCadeau.TypeRelation.ToString(), // N'oubliez pas le .ToString() pour les enums
+                Occasion = createdCadeau.Occasion,
+                Honneur = createdCadeau.Honneur,
+                DateDeclaration = createdCadeau.DateDeclaration,
+                Message = createdCadeau.Message,
+                Statut = createdCadeau.Statut.ToString(), // N'oubliez pas le .ToString() pour les enums
+                DateReceptionCadeaux = createdCadeau.DateReceptionCadeaux,
+                Anonyme = createdCadeau.Anonyme,
+                Description = createdCadeau.Description
+            };
+
+            // 4. Renvoyer le DTO complet
+            return CreatedAtAction(nameof(GetById), new { id = createdCadeau.IdCadeaux }, createdCadeauDto);
         }
+
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id, [FromBody] DeclarationCadeau cadeau)
+        // ON MET À JOUR LA DOCUMENTATION SWAGGER
+        [ProducesResponseType(typeof(DeclarationCadeauDto), 200)] // Succès, renvoie l'objet mis à jour
+        [ProducesResponseType(400)]                             // Erreur de validation
+        [ProducesResponseType(404)]                             // Ressource non trouvée
+        public async Task<IActionResult> Update(long id, [FromBody] UpdateDeclarationCadeauDto cadeauDto)
         {
-            if (id != cadeau.IdCadeaux) return BadRequest();
-            await _service.UpdateAsync(cadeau);
-            return NoContent();
+            // 1. Récupérer l'entité existante (inchangé)
+            var existingCadeau = await _service.GetByIdAsync(id);
+
+            // 2. Vérifier si l'entité existe (inchangé)
+            if (existingCadeau == null)
+            {
+                // On peut aussi ajouter un message pour plus de clarté
+                return NotFound(new { message = $"Aucune déclaration de cadeau trouvée avec l'ID {id}." });
+            }
+
+            // 3. Mapper les propriétés du DTO vers l'entité (inchangé)
+            existingCadeau.ValeurEstime = cadeauDto.ValeurEstime;
+            existingCadeau.IdentiteDonneur = cadeauDto.IdentiteDonneur;
+            existingCadeau.TypeRelation = cadeauDto.TypeRelation;
+            existingCadeau.Occasion = cadeauDto.Occasion;
+            existingCadeau.Honneur = cadeauDto.Honneur;
+            existingCadeau.Message = cadeauDto.Message;
+            existingCadeau.Statut = cadeauDto.Statut;
+            existingCadeau.DateReceptionCadeaux = cadeauDto.DateReceptionCadeaux;
+            existingCadeau.Anonyme = cadeauDto.Anonyme;
+            existingCadeau.Description = cadeauDto.Description;
+
+            // 4. Appeler le service pour sauvegarder les changements (inchangé)
+            await _service.UpdateAsync(existingCadeau);
+
+            // 5. MAPPER L'ENTITÉ MISE À JOUR VERS UN DTO DE RÉPONSE (LA MODIFICATION EST ICI)
+            var updatedCadeauDto = new DeclarationCadeauDto
+            {
+                IdCadeaux = existingCadeau.IdCadeaux,
+                IdUser = existingCadeau.IdUser,
+                GUID = existingCadeau.GUID,
+                ValeurEstime = existingCadeau.ValeurEstime,
+                IdentiteDonneur = existingCadeau.IdentiteDonneur,
+                TypeRelation = existingCadeau.TypeRelation.ToString(),
+                Occasion = existingCadeau.Occasion,
+                Honneur = existingCadeau.Honneur,
+                DateDeclaration = existingCadeau.DateDeclaration,
+                Message = existingCadeau.Message,
+                Statut = existingCadeau.Statut.ToString(),
+                DateReceptionCadeaux = existingCadeau.DateReceptionCadeaux,
+                Anonyme = existingCadeau.Anonyme,
+                Description = existingCadeau.Description
+            };
+
+            // 6. RENVOYER Ok() AVEC LE DTO (AU LIEU DE NoContent())
+            return Ok(updatedCadeauDto);
         }
+        // Dans Controller/DeclarationCadeauController.cs
 
         [HttpDelete("{id}")]
+        // BONNE PRATIQUE : Documentez les codes de retour pour Swagger
+        [ProducesResponseType(typeof(object), 200)] // Succès avec un message
+        [ProducesResponseType(404)]                 // Ressource non trouvée
         public async Task<IActionResult> Delete(long id)
         {
+            // 1. Tente de supprimer l'élément via le service.
             var success = await _service.DeleteAsync(id);
-            return success ? NoContent() : NotFound();
+
+            // 2. Vérifie le résultat.
+            if (success)
+            {
+                // 3. Si la suppression a réussi, renvoyer un statut 200 OK
+                //    avec un objet JSON contenant le message.
+                return Ok(new { message = "La déclaration de cadeau a été supprimée avec succès." });
+            }
+            else
+            {
+                // 4. Si l'élément n'a pas été trouvé, renvoyer 404 Not Found.
+                return NotFound(new { message = $"Aucune déclaration de cadeau trouvée avec l'ID {id}." });
+            }
         }
+
+
     }
 }
 

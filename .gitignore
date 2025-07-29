@@ -1,13 +1,52 @@
-# === ANGULAR ===
-frontend/**/node_modules
-frontend/**/dist
+# ===================================================================
+# Fichier .gitignore complet pour un projet Fullstack (.NET + Angular)
+# ===================================================================
 
-# === .NET ===
-backend/**/bin
-backend/**/obj
-backend/.vs
-
-# === Général ===
+# === Fichiers de configuration spécifiques à l'IDE et à l'utilisateur ===
+# A ignorer où qu'ils soient dans le projet.
+*.suo
 *.user
-*.log
+*.userosscache
+*.sln.docstates
+.DS_Store
+
+# === Dossier de configuration de Visual Studio ===
+# Ignore le dossier .vs/ à la racine et dans n'importe quel sous-dossier.
+**/.vs/
+
+# === Fichiers de log et de cache ===
+**/*.log
+**/*.tlog
+**/*.slog
+
+# === Fichiers générés par les outils de build .NET ===
+# Cible les dossiers bin, obj, Debug, Release, etc., où qu'ils soient.
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ebug/
+**/[Rr]elease/
+**/[Rr]eleases/
+**/x64/
+**/x86/
+**/build/
+**/bld/
+**/publish/
+
+# === Fichiers et dossiers NuGet ===
+**/packages/
+*.nupkg
+
+# === Fichiers de déploiement Web .NET ===
+*.pubxml
+*.publish.xml
+
+# === Fichiers spécifiques à Angular ===
+**/node_modules/
+**/dist/
+**/coverage/
 *.env
+.angular/
+
+# === Fichiers générés par d'autres outils (ex: Resharper) ===
+_ReSharper*/
+*.[Rr]esharper

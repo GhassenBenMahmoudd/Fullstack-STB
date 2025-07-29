@@ -4,6 +4,1194 @@
     "title": "STB API",
     "version": "v1"
   },
-  "paths": { },
-  "components": { }
+  "paths": {
+    "/api/DeclarationCadeau": {
+      "get": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeclarationCadeauDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeclarationCadeauDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeclarationCadeauDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDeclarationCadeauDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDeclarationCadeauDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDeclarationCadeauDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DeclarationCadeau/{id}": {
+      "get": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeau"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeau"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeau"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeclarationCadeauDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeclarationCadeauDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeclarationCadeauDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": { }
+              },
+              "application/json": {
+                "schema": { }
+              },
+              "text/json": {
+                "schema": { }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DeclarationCorruption": {
+      "get": {
+        "tags": [
+          "DeclarationCorruption"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeclarationCorruption"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeclarationCorruption"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeclarationCorruption"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DeclarationCorruption"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationCorruption"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationCorruption"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationCorruption"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruption"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruption"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruption"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DeclarationCorruption/{id}": {
+      "get": {
+        "tags": [
+          "DeclarationCorruption"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruption"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruption"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruption"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DeclarationCorruption"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationCorruption"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationCorruption"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclarationCorruption"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DeclarationCorruption"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/DemandeConseil": {
+      "get": {
+        "tags": [
+          "DemandeConseil"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DemandeConseil"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DemandeConseil"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DemandeConseil"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DemandeConseil"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandeConseil"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandeConseil"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandeConseil"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandeConseil"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandeConseil"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandeConseil"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DemandeConseil/{id}": {
+      "get": {
+        "tags": [
+          "DemandeConseil"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandeConseil"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandeConseil"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DemandeConseil"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DemandeConseil"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandeConseil"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandeConseil"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemandeConseil"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DemandeConseil"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateDeclarationCadeauDto": {
+        "required": [
+          "dateReceptionCadeaux",
+          "identiteDonneur",
+          "idUser",
+          "statut",
+          "typeRelation",
+          "valeurEstime"
+        ],
+        "type": "object",
+        "properties": {
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "valeurEstime": {
+            "minimum": 0,01,
+            "type": "number",
+            "format": "double"
+          },
+          "identiteDonneur": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "typeRelation": {
+            "$ref": "#/components/schemas/TypeRelation"
+          },
+          "occasion": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "honneur": {
+            "type": "boolean"
+          },
+          "message": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "dateReceptionCadeaux": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeclarationCadeau": {
+        "required": [
+          "dateDeclaration",
+          "identiteDonneur",
+          "typeRelation",
+          "valeurEstime"
+        ],
+        "type": "object",
+        "properties": {
+          "idCadeaux": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "valeurEstime": {
+            "type": "number",
+            "format": "double"
+          },
+          "identiteDonneur": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "typeRelation": {
+            "$ref": "#/components/schemas/TypeRelation"
+          },
+          "occasion": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "honneur": {
+            "type": "boolean"
+          },
+          "dateDeclaration": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "dateReceptionCadeaux": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "employe": {
+            "$ref": "#/components/schemas/Employe"
+          },
+          "documentFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentFile"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeclarationCadeauDto": {
+        "type": "object",
+        "properties": {
+          "idCadeaux": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "valeurEstime": {
+            "type": "number",
+            "format": "double"
+          },
+          "identiteDonneur": {
+            "type": "string",
+            "nullable": true
+          },
+          "typeRelation": {
+            "type": "string",
+            "nullable": true
+          },
+          "occasion": {
+            "type": "string",
+            "nullable": true
+          },
+          "honneur": {
+            "type": "boolean"
+          },
+          "dateDeclaration": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statut": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateReceptionCadeaux": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeclarationCorruption": {
+        "required": [
+          "dateObservation",
+          "description",
+          "objetSignalement",
+          "typeDomaine"
+        ],
+        "type": "object",
+        "properties": {
+          "idCorruption": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "objetSignalement": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string"
+          },
+          "entitesConcernees": {
+            "maxLength": 200,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "dateObservation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "typeDomaine": {
+            "$ref": "#/components/schemas/TypeDomaine"
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "employe": {
+            "$ref": "#/components/schemas/Employe"
+          },
+          "documentFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentFile"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DemandeConseil": {
+        "required": [
+          "dateDemande",
+          "description",
+          "objet"
+        ],
+        "type": "object",
+        "properties": {
+          "idConseil": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string"
+          },
+          "dateDemande": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "objet": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "employe": {
+            "$ref": "#/components/schemas/Employe"
+          },
+          "documentFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentFile"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DocumentFile": {
+        "required": [
+          "fileName"
+        ],
+        "type": "object",
+        "properties": {
+          "idFile": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idCorruption": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "idCadeaux": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "idConseil": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "fileName": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "filePath": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "dateUpload": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "declarationCorruption": {
+            "$ref": "#/components/schemas/DeclarationCorruption"
+          },
+          "declarationCadeaux": {
+            "$ref": "#/components/schemas/DeclarationCadeau"
+          },
+          "demandeConseil": {
+            "$ref": "#/components/schemas/DemandeConseil"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Employe": {
+        "required": [
+          "email",
+          "matricule",
+          "nom",
+          "password",
+          "prenom"
+        ],
+        "type": "object",
+        "properties": {
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "prenom": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "nom": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "numeroTelephone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "matricule": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "declarationsCorruption": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeclarationCorruption"
+            },
+            "nullable": true
+          },
+          "demandesConseil": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DemandeConseil"
+            },
+            "nullable": true
+          },
+          "declarationsCadeaux": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeclarationCadeau"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "Statut": {
+        "enum": [
+          "ACCEPTER",
+          "REFUSER",
+          "INFORMATIONS_MANQUANTES"
+        ],
+        "type": "string"
+      },
+      "TypeDomaine": {
+        "enum": [
+          "CAS_DE_CORRUPTION",
+          "FAITS_CONTRAIRES_A_LA_LOI_DE_L_ETHIQUE",
+          "CAS_DE_CONFLIT_D_INTERET"
+        ],
+        "type": "string"
+      },
+      "TypeRelation": {
+        "enum": [
+          "PARTENAIRE",
+          "FOURNISSEUR",
+          "AUTRE"
+        ],
+        "type": "string"
+      },
+      "UpdateDeclarationCadeauDto": {
+        "required": [
+          "dateReceptionCadeaux",
+          "identiteDonneur",
+          "statut",
+          "typeRelation",
+          "valeurEstime"
+        ],
+        "type": "object",
+        "properties": {
+          "valeurEstime": {
+            "minimum": 0,01,
+            "type": "number",
+            "format": "double"
+          },
+          "identiteDonneur": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "typeRelation": {
+            "$ref": "#/components/schemas/TypeRelation"
+          },
+          "occasion": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "honneur": {
+            "type": "boolean"
+          },
+          "message": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "dateReceptionCadeaux": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

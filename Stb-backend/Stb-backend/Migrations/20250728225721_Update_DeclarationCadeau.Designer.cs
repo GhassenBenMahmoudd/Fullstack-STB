@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using stb_backend.Data;
 
@@ -11,9 +12,11 @@ using stb_backend.Data;
 namespace stb_backend.Migrations
 {
     [DbContext(typeof(StbDbContext))]
-    partial class StbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250728225721_Update_DeclarationCadeau")]
+    partial class Update_DeclarationCadeau
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,11 +43,13 @@ namespace stb_backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<Guid>("GUID")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("GUID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Honneur")
                         .HasColumnType("bit");
@@ -61,10 +66,12 @@ namespace stb_backend.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Message")
+                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Occasion")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 

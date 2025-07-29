@@ -6,29 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace stb_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class intialmigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Managers",
-                columns: table => new
-                {
-                    IdUser = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Matricule = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Prenom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Nom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NumeroTelephone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Managers", x => x.IdUser);
-                });
-
             migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
@@ -38,35 +20,15 @@ namespace stb_backend.Migrations
                     Prenom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Nom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     NumeroTelephone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    Matricule = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Departement = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.IdUser);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employes",
-                columns: table => new
-                {
-                    IdUser = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Matricule = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Prenom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Nom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NumeroTelephone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ManagerIdUser = table.Column<long>(type: "bigint", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employes", x => x.IdUser);
-                    table.ForeignKey(
-                        name: "FK_Employes_Managers_ManagerIdUser",
-                        column: x => x.ManagerIdUser,
-                        principalTable: "Managers",
-                        principalColumn: "IdUser");
                 });
 
             migrationBuilder.CreateTable(
@@ -87,17 +49,23 @@ namespace stb_backend.Migrations
                     Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateReceptionCadeaux = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Anonyme = table.Column<bool>(type: "bit", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    ManagerIdUser = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DeclarationsCadeaux", x => x.IdCadeaux);
                     table.ForeignKey(
-                        name: "FK_DeclarationsCadeaux_Employes_IdUser",
+                        name: "FK_DeclarationsCadeaux_User_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "Employes",
+                        principalTable: "User",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DeclarationsCadeaux_User_ManagerIdUser",
+                        column: x => x.ManagerIdUser,
+                        principalTable: "User",
+                        principalColumn: "IdUser");
                 });
 
             migrationBuilder.CreateTable(
@@ -119,9 +87,9 @@ namespace stb_backend.Migrations
                 {
                     table.PrimaryKey("PK_DeclarationsCorruption", x => x.IdCorruption);
                     table.ForeignKey(
-                        name: "FK_DeclarationsCorruption_Employes_IdUser",
+                        name: "FK_DeclarationsCorruption_User_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "Employes",
+                        principalTable: "User",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -143,9 +111,9 @@ namespace stb_backend.Migrations
                 {
                     table.PrimaryKey("PK_DemandesConseil", x => x.IdConseil);
                     table.ForeignKey(
-                        name: "FK_DemandesConseil_Employes_IdUser",
+                        name: "FK_DemandesConseil_User_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "Employes",
+                        principalTable: "User",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -202,6 +170,11 @@ namespace stb_backend.Migrations
                 column: "IdUser");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DeclarationsCadeaux_ManagerIdUser",
+                table: "DeclarationsCadeaux",
+                column: "ManagerIdUser");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DeclarationsCorruption_IdUser",
                 table: "DeclarationsCorruption",
                 column: "IdUser");
@@ -235,11 +208,6 @@ namespace stb_backend.Migrations
                 name: "IX_DocumentFile_IdCorruption",
                 table: "DocumentFile",
                 column: "IdCorruption");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Employes_ManagerIdUser",
-                table: "Employes",
-                column: "ManagerIdUser");
         }
 
         /// <inheritdoc />
@@ -247,9 +215,6 @@ namespace stb_backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DocumentFile");
-
-            migrationBuilder.DropTable(
-                name: "User");
 
             migrationBuilder.DropTable(
                 name: "DeclarationsCadeaux");
@@ -261,10 +226,7 @@ namespace stb_backend.Migrations
                 name: "DemandesConseil");
 
             migrationBuilder.DropTable(
-                name: "Employes");
-
-            migrationBuilder.DropTable(
-                name: "Managers");
+                name: "User");
         }
     }
 }
