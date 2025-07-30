@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using stb_backend.Domain;
 using stb_backend.DTOs;
 using stb_backend.Interfaces;
@@ -38,7 +39,8 @@ namespace stb_backend.Controller
                 Statut = c.Statut.ToString(), // Conversion propre
                 DateReceptionCadeaux = c.DateReceptionCadeaux,
                 Anonyme = c.Anonyme,
-                Description = c.Description
+                Description = c.Description,
+                Archived = c.EstArchive
             });
 
             return Ok(cadeauxDto);
@@ -179,6 +181,34 @@ namespace stb_backend.Controller
                 return NotFound(new { message = $"Aucune déclaration de cadeau trouvée avec l'ID {id}." });
             }
         }
+
+        // Dans DeclarationCadeauController.cs
+
+        [HttpPatch("{id}/toggle-archive")]
+        // ...
+        public async Task<IActionResult> ToggleArchiveStatus(long id)
+        {
+            var declaration = await _service.GetByIdAsync(id);
+
+            if (declaration == null)
+            {
+                return NotFound(/*...*/);
+            }
+
+            // CORRECTION : Utiliser le nom de la propriété de l'entité
+            declaration.EstArchive = !declaration.EstArchive;
+
+            await _service.UpdateAsync(declaration);
+
+            // CORRECTION : Renvoyer le bon nom de propriété
+            return Ok(new
+            {
+                message = "Le statut d'archivage a été mis à jour avec succès.",
+                nouvelEtat = declaration.EstArchive ? "Archivé" : "Désarchivé",
+                archived = declaration.EstArchive // J'utilise camelCase pour la réponse JSON, c'est une convention
+            });
+        }
+
 
 
     }

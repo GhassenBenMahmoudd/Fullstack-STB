@@ -278,6 +278,29 @@
         }
       }
     },
+    "/api/DeclarationCadeau/{id}/toggle-archive": {
+      "patch": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/DeclarationCorruption": {
       "get": {
         "tags": [
@@ -772,6 +795,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "estArchive": {
+            "type": "boolean"
+          },
           "anonyme": {
             "type": "boolean"
           },
@@ -850,6 +876,9 @@
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "archived": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

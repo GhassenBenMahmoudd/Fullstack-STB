@@ -16,7 +16,9 @@ namespace stb_backend.Services
 
         public async Task<IEnumerable<DeclarationCadeau>> GetAllAsync()
         {
-            return await _context.DeclarationsCadeaux.Include(d => d.DocumentFiles).ToListAsync();
+            return await _context.DeclarationsCadeaux
+                                 .Include(d => d.DocumentFiles)
+                                 .ToListAsync();
         }
 
         public async Task<DeclarationCadeau?> GetByIdAsync(long id)

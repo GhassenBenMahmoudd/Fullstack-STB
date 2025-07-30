@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using stb_backend.Data;
 
@@ -11,9 +12,11 @@ using stb_backend.Data;
 namespace stb_backend.Migrations
 {
     [DbContext(typeof(StbDbContext))]
-    partial class StbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250729150819_AddEstArchiveToDeclarationCadeau")]
+    partial class AddEstArchiveToDeclarationCadeau
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +36,9 @@ namespace stb_backend.Migrations
                     b.Property<bool>("Anonyme")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("Archived")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("DateDeclaration")
                         .HasColumnType("datetime2");
 
@@ -42,9 +48,6 @@ namespace stb_backend.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
-
-                    b.Property<bool>("EstArchive")
-                        .HasColumnType("bit");
 
                     b.Property<Guid>("GUID")
                         .HasColumnType("uniqueidentifier");

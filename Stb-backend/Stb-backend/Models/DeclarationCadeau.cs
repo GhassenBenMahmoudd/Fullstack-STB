@@ -41,6 +41,8 @@ namespace stb_backend.Domain
 
         public DateTime DateReceptionCadeaux { get; set; }
 
+        public bool EstArchive { get; set; } = false;
+
         public bool Anonyme { get; set; }
 
         [StringLength(1000)]

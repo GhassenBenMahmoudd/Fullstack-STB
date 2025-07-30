@@ -17,5 +17,7 @@ namespace stb_backend.DTOs
         public DateTime DateReceptionCadeaux { get; set; }
         public bool Anonyme { get; set; }
         public string? Description { get; set; }
+        public bool Archived { get; set; }
+
     }
 }
