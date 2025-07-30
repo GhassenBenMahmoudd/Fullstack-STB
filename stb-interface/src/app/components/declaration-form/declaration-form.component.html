@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <h2>{{ isEditMode ? 'Modifier la' : 'Nouvelle' }} Déclaration</h2>
+  <hr>
+  <form [formGroup]="declarationForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="identiteDonneur" class="form-label">Identité du Donneur</label>
+        <input type="text" id="identiteDonneur" class="form-control" formControlName="identiteDonneur">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="valeurEstime" class="form-label">Valeur Estimée (€)</label>
+        <input type="number" id="valeurEstime" class="form-control" formControlName="valeurEstime">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="typeRelation" class="form-label">Type de Relation</label>
+        <select id="typeRelation" class="form-select" formControlName="typeRelation">
+          <option *ngFor="let type of typesRelation" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="dateReceptionCadeaux" class="form-label">Date de Réception</label>
+        <input type="date" id="dateReceptionCadeaux" class="form-control" formControlName="dateReceptionCadeaux">
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
+    </div>
+    <div class="mt-4">
+      <button type="submit" class="btn btn-success" [disabled]="declarationForm.invalid">
+        {{ isEditMode ? 'Mettre à jour' : 'Enregistrer' }}
+      </button>
+      <a routerLink="/declarations" class="btn btn-secondary ms-2">Annuler</a>
+    </div>
+  </form>
+</div>

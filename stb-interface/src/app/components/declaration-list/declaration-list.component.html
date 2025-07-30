@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Liste des Déclarations</h2>
+    <button class="btn btn-primary" [routerLink]="['/declarations/new']">
+      + Nouvelle Déclaration
+    </button>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Donneur</th>
+        <th>Valeur</th>
+        <th>Statut</th>
+        <th>Date Réception</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let decl of declarations">
+        <td>{{ decl.identiteDonneur }}</td>
+        <td>{{ decl.valeurEstime | currency:'EUR' }}</td>
+        <td><span class="badge" [ngClass]="{'bg-success': decl.statut === 'ACCEPTER', 'bg-danger': decl.statut === 'REFUSER', 'bg-warning text-dark': decl.statut === 'EN_ATTENTE'}">{{ decl.statut }}</span></td>
+        <td>{{ decl.dateReceptionCadeaux | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/declarations/edit', decl.idCadeaux]">Modifier</button>
+          <button class="btn btn-sm btn-outline-danger ms-2" (click)="deleteDeclaration(decl.idCadeaux)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

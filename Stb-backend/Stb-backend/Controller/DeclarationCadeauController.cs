@@ -69,7 +69,7 @@ namespace stb_backend.Controller
                 Occasion = cadeauDto.Occasion,
                 Honneur = cadeauDto.Honneur,
                 Message = cadeauDto.Message,
-                Statut = cadeauDto.Statut,
+                Statut = Statut.EN_ATTENTE,
                 DateReceptionCadeaux = cadeauDto.DateReceptionCadeaux,
                 Anonyme = cadeauDto.Anonyme,
                 Description = cadeauDto.Description
@@ -209,7 +209,47 @@ namespace stb_backend.Controller
             });
         }
 
+        [HttpPatch("{id}/statut")]
+       // [Authorize(Policy = "PeutGererStatut")] // ON APPLIQUE LA SÉCURITÉ
+        [ProducesResponseType(typeof(DeclarationCadeauDto), 200)] // On renvoie l'objet mis à jour
+        [ProducesResponseType(400)] // Bad Request (ex: statut invalide)
+        [ProducesResponseType(403)] // Forbidden (l'utilisateur n'est pas un manager)
+        [ProducesResponseType(404)] // Not Found
+        public async Task<IActionResult> UpdateStatus(long id, [FromBody] UpdateStatutDto statutDto)
+        {
+            // 1. Récupérer l'entité depuis le service
+            var declaration = await _service.GetByIdAsync(id);
 
+            // 2. Vérifier si elle existe
+            if (declaration == null)
+            {
+                return NotFound(new { message = $"Aucune déclaration trouvée avec l'ID {id}." });
+            }
+
+            // OPTIONNEL : Ajouter une logique métier. Par exemple, on ne peut pas changer le statut d'une déclaration déjà acceptée/refusée.
+            if (declaration.Statut == Statut.ACCEPTER || declaration.Statut == Statut.REFUSER)
+            {
+                return BadRequest(new { message = "Le statut de cette déclaration ne peut plus être modifié." });
+            }
+
+            // 3. Appliquer la modification
+            declaration.Statut = statutDto.NouveauStatut;
+
+            // 4. Sauvegarder les changements
+            await _service.UpdateAsync(declaration);
+
+            // 5. Mapper l'entité mise à jour vers un DTO pour la réponse
+            var updatedDto = new DeclarationCadeauDto
+            {
+                // ... mappez tous les champs de `declaration` vers `updatedDto` ...
+                IdCadeaux = declaration.IdCadeaux,
+                Statut = declaration.Statut.ToString(),
+                // etc.
+            };
+
+            // 6. Renvoyer une réponse de succès avec l'objet mis à jour
+            return Ok(updatedDto);
+        }
 
     }
 }

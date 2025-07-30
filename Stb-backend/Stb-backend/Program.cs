@@ -36,6 +36,18 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<StbDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// DÉBUT DE LA CONFIGURATION CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // L'URL de votre app Angular
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 // Build après l'ajout de tous les services
 var app = builder.Build();
 
@@ -66,6 +78,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+// ON APPLIQUE LA POLITIQUE CORS
+app.UseCors("AllowAngularApp");
 
 app.UseAuthorization();
 

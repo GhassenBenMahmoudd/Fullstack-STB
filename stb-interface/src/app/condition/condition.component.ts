@@ -1,12 +1,14 @@
+// src/app/components/condition/condition.component.ts
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-condition',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './condition.component.html',
-  styleUrl: './condition.component.css'
+  styleUrls: ['./condition.component.css']
 })
 export class ConditionComponent {
-
+  constructor() { }
 }
