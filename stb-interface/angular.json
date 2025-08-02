@@ -36,6 +36,12 @@
           },
           "configurations": {
             "production": {
+               "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }
+            ],
               "budgets": [
                 {
                   "type": "initial",
@@ -89,9 +95,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/libs/font-awesome/css/fontawesome-all.min.css",
+              "src/assets/libs/jarallax/dist/jarallax.css",
+              "src/assets/css/theme.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/libs/jquery/dist/jquery.min.js",
+              "src/assets/libs/popper.js/dist/umd/popper.min.js",
+              "src/assets/libs/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/libs/svg-injector/dist/svg-injector.min.js",
+              "src/assets/libs/jarallax/dist/jarallax.min.js",
+              "src/assets/js/theme.js"
+            ]
           }
         }
       }

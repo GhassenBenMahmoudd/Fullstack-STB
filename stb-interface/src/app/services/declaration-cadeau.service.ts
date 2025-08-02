@@ -8,7 +8,7 @@ import { DeclarationCadeau, DeclarationCadeauPayload } from '../models/declarati
 } )
 export class DeclarationCadeauService {
   // Adaptez le port si nécessaire
-  private readonly apiUrl = 'https://localhost:7123/api/DeclarationCadeau';
+  private readonly apiUrl = 'https://localhost:7048/api/DeclarationCadeau';
 
   constructor(private http: HttpClient ) { }
 
@@ -34,5 +34,8 @@ export class DeclarationCadeauService {
 
   toggleArchive(id: number): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${id}/toggle-archive`, {} );
+  }
+  updateDeclarationStatus(id: number, nouveauStatut: string): Observable<DeclarationCadeau> {
+    return this.http.patch<DeclarationCadeau>(`${this.apiUrl}/${id}/statut`, { nouveauStatut } );
   }
 }

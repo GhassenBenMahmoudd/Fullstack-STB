@@ -1,0 +1,77 @@
+<div class="main-wrapper">
+  <div class="d-flex align-items-center position-relative min-vh-100">
+
+    <!-- Left content -->
+    <div class="jarallax overlay overlay-primary overlay-70 col-lg-5 col-xl-4 d-none d-lg-flex align-items-center h-100vh px-0" data-jarallax data-speed="0.9" style="background-image: url(assets/img/content/vericla-cover.jpg);">
+      <div class="w-100 p-5 text-center">
+        <!-- Contenu de la colonne de gauche (logo, texte, etc.) -->
+        <div class="position-relative">
+          <h1 class="text-white font-weight-normal">Rejoignez Notre Communauté</h1>
+          <p class="text-white-90 mb-0 w-85 w-xl-70 mx-auto">
+            Accédez à votre espace pour gérer vos déclarations et consulter vos informations.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- End Left content -->
+
+    <!-- Login form -->
+    <div class="container">
+      <div class="row justify-content-center justify-content-lg-start">
+        <div class="col-md-8 col-lg-7 col-xl-5 offset-lg-2 offset-xl-3 my-5">
+
+          <div class="mb-6">
+            <h2 class="font-weight-normal mb-0">Bienvenue sur <span class="text-primary">STB</span></h2>
+            <p class="mb-0">Connectez-vous à votre compte.</p>
+          </div>
+
+          <!-- GESTION DES ERREURS -->
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+
+          <!-- FORMULAIRE ANGULAR -->
+          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="row">
+              <!-- Input Matricule -->
+              <div class="col-12 mb-2">
+                <div class="form-group">
+                  <label for="matricule">Matricule</label>
+                  <input type="text" class="form-control" id="matricule" name="matricule" placeholder="Votre matricule" [(ngModel)]="credentials.matricule" required #matricule="ngModel">
+                  <div *ngIf="matricule.invalid && (matricule.dirty || matricule.touched)" class="text-danger small mt-1">
+                    La matricule est requise.
+                  </div>
+                </div>
+              </div>
+              <!-- End Input -->
+
+              <!-- Input Mot de passe -->
+              <div class="col-12 mb-2">
+                <div class="form-group">
+                  <label for="password">Mot de passe</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe" [(ngModel)]="credentials.password" required #password="ngModel">
+                   <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger small mt-1">
+                    Le mot de passe est requis.
+                  </div>
+                </div>
+              </div>
+              <!-- End Input -->
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-md-12 center">
+                <button type="submit" class="btn btn-primary btn-block mt-4 mb-2" [disabled]="loginForm.invalid || isLoading">
+                  <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  {{ isLoading ? 'Connexion...' : 'Se connecter' }}
+                </button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- End Login form -->
+
+  </div>
+</div>
