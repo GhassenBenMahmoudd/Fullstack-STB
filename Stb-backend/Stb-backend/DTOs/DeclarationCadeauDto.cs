@@ -18,6 +18,7 @@ namespace stb_backend.DTOs
         public bool Anonyme { get; set; }
         public string? Description { get; set; }
         public bool Archived { get; set; }
+        public List<DocumentFileDto> DocumentFiles { get; set; } = new List<DocumentFileDto>();
 
     }
 }
