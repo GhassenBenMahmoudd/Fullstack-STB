@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "loginDto",
-        "Type": "LoginDto",
+        "Type": "stb_backend.DTOs.LoginDto",
         "IsRequired": true
       }
     ],

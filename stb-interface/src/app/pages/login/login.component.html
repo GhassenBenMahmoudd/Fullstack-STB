@@ -36,10 +36,9 @@
               <!-- Input Matricule -->
               <div class="col-12 mb-2">
                 <div class="form-group">
-                  <label for="matricule">Matricule</label>
-                  <input type="text" class="form-control" id="matricule" name="matricule" placeholder="Votre matricule" [(ngModel)]="credentials.matricule" required #matricule="ngModel">
-                  <div *ngIf="matricule.invalid && (matricule.dirty || matricule.touched)" class="text-danger small mt-1">
-                    La matricule est requise.
+                 <label for="identifier">Matricule ou Email</label>
+                  <input type="text" class="form-control" id="identifier" name="identifier" placeholder="Votre matricule ou email" [(ngModel)]="identifierInput" required #identifier="ngModel">
+                  <div *ngIf="identifier.invalid && (identifier.dirty || identifier.touched)" class="text-danger small mt-1">
                   </div>
                 </div>
               </div>

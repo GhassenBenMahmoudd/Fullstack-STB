@@ -1389,13 +1389,13 @@
             "type": "string",
             "format": "email"
           },
-          "matricule": {
-            "maxLength": 50,
+          "password": {
+            "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "password": {
-            "maxLength": 255,
+          "matricule": {
+            "maxLength": 50,
             "minLength": 0,
             "type": "string"
           },
@@ -1424,20 +1424,19 @@
         "additionalProperties": false
       },
       "LoginDto": {
-        "required": [
-          "matricule",
-          "password"
-        ],
         "type": "object",
         "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
           "matricule": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "password": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

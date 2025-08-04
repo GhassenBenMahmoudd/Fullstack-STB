@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-public class LoginDto
+﻿namespace stb_backend.DTOs
 {
-    [Required]
-    [StringLength(50)] // Correspond à la longueur de la Matricule dans votre entité Employe
-    public string Matricule { get; set; } // <-- MODIFIÉ: Email a été remplacé par Matricule
-
-    [Required]
-    public string Password { get; set; }
+    public class LoginDto
+    {
+        public string? Email { get; set; }
+        public string? Matricule { get; set; }
+        public string Password { get; set; } = string.Empty;
+    }
 }
+

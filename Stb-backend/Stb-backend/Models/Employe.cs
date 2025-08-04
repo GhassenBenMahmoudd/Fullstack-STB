@@ -10,10 +10,6 @@ namespace stb_backend.Domain
         [StringLength(50)]
         public string Matricule { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string Password { get; set; }
-
         // Relations
         public virtual ICollection<DeclarationCorruption> DeclarationsCorruption { get; set; } = new List<DeclarationCorruption>();
         public virtual ICollection<DemandeConseil> DemandesConseil { get; set; } = new List<DemandeConseil>();

@@ -38,10 +38,31 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                            <li class="nav-item mr-0">
-                                <a class="btn btn-sm d-none d-lg-inline-block btn-recrutement ml-auto" href="/login">Se connecter</a>
+                            <!-- Si l'utilisateur est connecté -->
+                            <li class="nav-item dropdown" *ngIf="isLoggedIn">
+                               <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    >
+                                    {{ userName }} {{ userPreNom }}
+                                    <br>Role : {{ userRole }}
+                                    </a>
+
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#" (click)="logout()">Se déconnecter</a>
+                                </div>
+                            </li>
+
+                            <!-- Sinon afficher le bouton de connexion -->
+                            <li class="nav-item mr-0" *ngIf="!isLoggedIn">
+                                <a class="btn btn-sm d-none d-lg-inline-block btn-recrutement ml-auto" routerLink="/login">Se connecter</a>
                             </li>
                         </ul>
+
                         <!-- End Navigation -->
 
                     </div>
