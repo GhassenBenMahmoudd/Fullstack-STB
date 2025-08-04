@@ -28,6 +28,11 @@
       <label for="description" class="form-label">Description</label>
       <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
     </div>
+    <div class="mb-3">
+  <label for="documents" class="form-label">Ajouter des documents</label>
+  <input type="file" class="form-control" id="documents" (change)="onFileSelected($event)" multiple>
+</div>
+
     <div class="mt-4">
       <button type="submit" class="btn btn-success" [disabled]="declarationForm.invalid">
         {{ isEditMode ? 'Mettre à jour' : 'Enregistrer' }}

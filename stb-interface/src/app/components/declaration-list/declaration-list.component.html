@@ -23,6 +23,7 @@
         <td><span class="badge" [ngClass]="{'bg-success': decl.statut === 'ACCEPTER', 'bg-danger': decl.statut === 'REFUSER', 'bg-warning text-dark': decl.statut === 'EN_ATTENTE'}">{{ decl.statut }}</span></td>
         <td>{{ decl.dateReceptionCadeaux | date:'dd/MM/yyyy' }}</td>
         <td>
+            <button class="btn btn-sm btn-outline-info me-2" [routerLink]="['/declarations/view', decl.idCadeaux]"> Consulter </button>
           <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/declarations/edit', decl.idCadeaux]">Modifier</button>
           <button class="btn btn-sm btn-outline-danger ms-2" (click)="deleteDeclaration(decl.idCadeaux)">Supprimer</button>
         </td>

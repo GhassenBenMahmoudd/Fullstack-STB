@@ -122,4 +122,9 @@ login(loginData: LoginDto): Observable<any> {
     const userRole = this.getRoleFromToken();
     return userRole ? roles.includes(userRole) : false;
   }
+
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
 }

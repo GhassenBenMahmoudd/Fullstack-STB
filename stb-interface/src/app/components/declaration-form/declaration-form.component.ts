@@ -15,6 +15,8 @@ export class DeclarationFormComponent implements OnInit {
   declarationForm: FormGroup;
   isEditMode = false;
   private currentId?: number;
+  selectedFiles: File[] = [];
+
 
   typesRelation = ['PARTENAIRE', 'FOURNISSEUR', 'AUTRE'];
 
@@ -49,21 +51,36 @@ export class DeclarationFormComponent implements OnInit {
       });
     }
   }
+onFileSelected(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  if (input.files) {
+    this.selectedFiles = Array.from(input.files);
+  }
+}
 
   onSubmit(): void {
-    if (this.declarationForm.invalid) {
-      return;
-    }
+  if (this.declarationForm.invalid) return;
 
-    const formData = this.declarationForm.value;
+  const formData = new FormData();
 
-    const action = this.isEditMode && this.currentId
-      ? this.declarationService.update(this.currentId, formData)
-      : this.declarationService.create(formData);
+  // Ajouter les données de la déclaration dans le FormData
+  Object.entries(this.declarationForm.value).forEach(([key, value]) => {
+    formData.append(key, value as string);
+  });
 
-    action.subscribe(() => {
-      alert(`Déclaration ${this.isEditMode ? 'mise à jour' : 'créée'} avec succès !`);
-      this.router.navigate(['/declarations']);
-    });
-  }
+  // Ajouter les fichiers sélectionnés
+  this.selectedFiles.forEach(file => {
+    formData.append('files', file); // ou 'files[]' selon backend
+  });
+
+  const action = this.isEditMode && this.currentId
+    ? this.declarationService.updateWithFiles(this.currentId, formData)
+    : this.declarationService.createWithFiles(formData);
+
+  action.subscribe(() => {
+    alert(`Déclaration ${this.isEditMode ? 'mise à jour' : 'créée'} avec succès !`);
+    this.router.navigate(['/declarations']);
+  });
+}
+
 }

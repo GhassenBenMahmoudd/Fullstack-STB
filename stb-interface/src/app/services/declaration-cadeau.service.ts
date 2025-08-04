@@ -38,4 +38,13 @@ export class DeclarationCadeauService {
   updateDeclarationStatus(id: number, nouveauStatut: string): Observable<DeclarationCadeau> {
     return this.http.patch<DeclarationCadeau>(`${this.apiUrl}/${id}/statut`, { nouveauStatut } );
   }
+  createWithFiles(formData: FormData): Observable<any> {
+  return this.http.post(`${this.apiUrl}/upload`, formData);
+}
+
+
+updateWithFiles(id: number, formData: FormData): Observable<any> {
+  return this.http.put(`${this.apiUrl}/declarationscadeaux/upload/${id}`, formData);
+}
+
 }

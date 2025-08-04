@@ -582,6 +582,127 @@
         }
       }
     },
+    "/api/DeclarationCadeau/upload": {
+      "post": {
+        "tags": [
+          "DeclarationCadeau"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "DateReceptionCadeaux",
+                  "IdentiteDonneur",
+                  "IdUser",
+                  "Statut",
+                  "TypeRelation",
+                  "ValeurEstime"
+                ],
+                "type": "object",
+                "properties": {
+                  "IdUser": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "ValeurEstime": {
+                    "minimum": 0,01,
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IdentiteDonneur": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "TypeRelation": {
+                    "$ref": "#/components/schemas/TypeRelation"
+                  },
+                  "Occasion": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Honneur": {
+                    "type": "boolean"
+                  },
+                  "Message": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Statut": {
+                    "$ref": "#/components/schemas/Statut"
+                  },
+                  "DateReceptionCadeaux": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Anonyme": {
+                    "type": "boolean"
+                  },
+                  "Description": {
+                    "maxLength": 1000,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "IdUser": {
+                  "style": "form"
+                },
+                "ValeurEstime": {
+                  "style": "form"
+                },
+                "IdentiteDonneur": {
+                  "style": "form"
+                },
+                "TypeRelation": {
+                  "style": "form"
+                },
+                "Occasion": {
+                  "style": "form"
+                },
+                "Honneur": {
+                  "style": "form"
+                },
+                "Message": {
+                  "style": "form"
+                },
+                "Statut": {
+                  "style": "form"
+                },
+                "DateReceptionCadeaux": {
+                  "style": "form"
+                },
+                "Anonyme": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "files": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/DeclarationCorruption": {
       "get": {
         "tags": [

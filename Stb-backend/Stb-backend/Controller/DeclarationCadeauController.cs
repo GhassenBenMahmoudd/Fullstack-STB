@@ -14,10 +14,12 @@ namespace stb_backend.Controller
     public class DeclarationCadeauController : ControllerBase
     {
         private readonly IDeclarationCadeauService _service;
+        private readonly IDocumentFileService _documentService;
 
-        public DeclarationCadeauController(IDeclarationCadeauService service)
+        public DeclarationCadeauController(IDeclarationCadeauService service, IDocumentFileService documentService)
         {
             _service = service;
+            _documentService = documentService;
         }
 
         // BONNE PRATIQUE : L'endpoint GET renvoie une liste de DTOs
@@ -391,7 +393,60 @@ namespace stb_backend.Controller
             // 7. Renvoyer une réponse de succès avec l'objet mis à jour
             return Ok(updatedDto);
         }
+        [Authorize]
+        [HttpPost("upload")]
+        public async Task<IActionResult> Upload([FromForm] CreateDeclarationCadeauDto dto, [FromForm] List<IFormFile> files)
+        {
+            var userIdFromToken = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userIdFromToken == null) return Unauthorized();
 
+            var cadeau = new DeclarationCadeau
+            {
+                GUID = Guid.NewGuid(),
+                DateDeclaration = DateTime.UtcNow,
+                IdUser = long.Parse(userIdFromToken),
+                ValeurEstime = dto.ValeurEstime,
+                IdentiteDonneur = dto.IdentiteDonneur,
+                TypeRelation = dto.TypeRelation,
+                Occasion = dto.Occasion,
+                Honneur = dto.Honneur,
+                Message = dto.Message,
+                Statut = Statut.EN_ATTENTE,
+                DateReceptionCadeaux = dto.DateReceptionCadeaux,
+                Anonyme = dto.Anonyme,
+                Description = dto.Description
+            };
+
+            // Enregistre la déclaration
+            var createdCadeau = await _service.CreateAsync(cadeau);
+
+            // Traiter les fichiers
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var filePath = Path.Combine("uploads", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    var doc = new DocumentFile
+                    {
+                        FileName = fileName,
+                        FilePath = filePath,
+                        IdCadeaux = createdCadeau.IdCadeaux,
+                        DateUpload = DateTime.Now
+                    };
+
+                    await _documentService.SaveAsync(doc); // à implémenter dans ton service
+                }
+            }
+
+            return Ok(new { message = "Déclaration créée avec fichiers." });
+        }
 
     }
 }

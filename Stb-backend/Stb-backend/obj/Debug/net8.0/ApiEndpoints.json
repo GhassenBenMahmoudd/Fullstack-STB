@@ -310,6 +310,77 @@
     ]
   },
   {
+    "ContainingType": "stb_backend.Controller.DeclarationCadeauController",
+    "Method": "Upload",
+    "RelativePath": "api/DeclarationCadeau/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdUser",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "ValeurEstime",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdentiteDonneur",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TypeRelation",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Occasion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Honneur",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Statut",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DateReceptionCadeaux",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Anonyme",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "files",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "stb_backend.Controller.DeclarationCorruptionController",
     "Method": "GetAll",
     "RelativePath": "api/DeclarationCorruption",

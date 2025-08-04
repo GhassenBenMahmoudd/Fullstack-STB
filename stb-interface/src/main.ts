@@ -9,6 +9,7 @@ import { AuthInterceptor } from './app/interceptors/auth.interceptor'; // <-- Im
 
 bootstrapApplication(AppComponent, {
   providers: [
+    
     // 1. Fournir les routes de l'application
     provideRouter(routes ),
 

@@ -5,7 +5,7 @@ namespace stb_backend.Domain
 {
 
     [Table("DocumentFile")]
-    public class DocumentFile
+    public class DocumentFile 
     {
         [Key]
         public long IdFile { get; set; }

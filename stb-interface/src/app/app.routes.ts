@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DeclarationListComponent } from './components/declaration-list/declaration-list.component';
+import { DeclarationDetailComponent } from './declarations/declaration-detail/declaration-detail.component';
 
 export const routes: Routes = [
   { 
@@ -32,6 +33,10 @@ export const routes: Routes = [
     component: DeclarationFormComponent,
     canActivate: [AuthGuard] // Protégez cette route !
   },
+{
+  path: 'declarations/view/:id',
+  component: DeclarationDetailComponent
+},
 
   // --- Redirections (toujours à la fin) ---
   { 

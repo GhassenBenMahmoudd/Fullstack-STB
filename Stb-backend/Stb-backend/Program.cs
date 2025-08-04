@@ -7,6 +7,7 @@ using stb_backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,6 +90,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
+
 .AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -103,11 +105,19 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+builder.Services.AddScoped<IDocumentFileService, DocumentFileService>();
+
 // --- FIN DE LA CONFIGURATION JWT ---
 
 
 // Build après l'ajout de tous les services
 var app = builder.Build();
+// 🔧 Créer automatiquement le dossier uploads s'il n'existe pas
+var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+if (!Directory.Exists(uploadPath))
+{
+    Directory.CreateDirectory(uploadPath);
+}
 
 // Migration automatique de la base
 using (var scope = app.Services.CreateScope())
@@ -133,8 +143,12 @@ else
 app.UseErrorHandlingMiddleware();
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "uploads")),
+    RequestPath = "/uploads"
+});
 app.UseRouting();
 // ON APPLIQUE LA POLITIQUE CORS
 app.UseCors("AllowAngularApp");
@@ -144,6 +158,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers(); // ✅ AJOUT
+
 
 
 app.Run();

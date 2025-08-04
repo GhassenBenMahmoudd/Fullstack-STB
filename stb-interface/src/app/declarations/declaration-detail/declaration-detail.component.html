@@ -1,0 +1,7 @@
+<div *ngIf="declaration">
+  <h2>Détails de la Déclaration</h2>
+  <p><strong>Donneur :</strong> {{ declaration?.identiteDonneur }}</p>
+  <p><strong>Valeur estimée :</strong> {{ declaration?.valeurEstime| currency:'EUR' }}</p>
+  <p><strong>Statut :</strong> {{ declaration?.statut }}</p>
+  <p><strong>Date de réception :</strong> {{ declaration?.dateReceptionCadeaux| date:'dd/MM/yyyy' }}</p>
+</div>
