@@ -216,103 +216,138 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateDeclarationCadeauDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDeclarationCadeauDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDeclarationCadeauDto"
+                "required": [
+                  "DateReceptionCadeaux",
+                  "IdentiteDonneur",
+                  "Statut",
+                  "TypeRelation",
+                  "ValeurEstime"
+                ],
+                "type": "object",
+                "properties": {
+                  "ValeurEstime": {
+                    "minimum": 0,01,
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IdentiteDonneur": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "TypeRelation": {
+                    "$ref": "#/components/schemas/TypeRelation"
+                  },
+                  "Occasion": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Honneur": {
+                    "type": "boolean"
+                  },
+                  "Message": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Statut": {
+                    "$ref": "#/components/schemas/Statut"
+                  },
+                  "DateReceptionCadeaux": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Anonyme": {
+                    "type": "boolean"
+                  },
+                  "Description": {
+                    "maxLength": 1000,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "NewFiles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "ExistingFileIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "newFiles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "existingFileIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "ValeurEstime": {
+                  "style": "form"
+                },
+                "IdentiteDonneur": {
+                  "style": "form"
+                },
+                "TypeRelation": {
+                  "style": "form"
+                },
+                "Occasion": {
+                  "style": "form"
+                },
+                "Honneur": {
+                  "style": "form"
+                },
+                "Message": {
+                  "style": "form"
+                },
+                "Statut": {
+                  "style": "form"
+                },
+                "DateReceptionCadeaux": {
+                  "style": "form"
+                },
+                "Anonyme": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "NewFiles": {
+                  "style": "form"
+                },
+                "ExistingFileIds": {
+                  "style": "form"
+                },
+                "newFiles": {
+                  "style": "form"
+                },
+                "existingFileIds": {
+                  "style": "form"
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCadeauDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCadeauDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCadeauDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -1072,6 +1107,42 @@
           }
         }
       }
+    },
+    "/api/Role/permissions": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Role/roles": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Role/can-declare-gifts": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1614,63 +1685,6 @@
         ],
         "type": "string"
       },
-      "UpdateDeclarationCadeauDto": {
-        "required": [
-          "dateReceptionCadeaux",
-          "identiteDonneur",
-          "statut",
-          "typeRelation",
-          "valeurEstime"
-        ],
-        "type": "object",
-        "properties": {
-          "valeurEstime": {
-            "minimum": 0,01,
-            "type": "number",
-            "format": "double"
-          },
-          "identiteDonneur": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string"
-          },
-          "typeRelation": {
-            "$ref": "#/components/schemas/TypeRelation"
-          },
-          "occasion": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "honneur": {
-            "type": "boolean"
-          },
-          "message": {
-            "maxLength": 500,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "statut": {
-            "$ref": "#/components/schemas/Statut"
-          },
-          "dateReceptionCadeaux": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "anonyme": {
-            "type": "boolean"
-          },
-          "description": {
-            "maxLength": 1000,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "UpdateStatutDto": {
         "required": [
           "nouveauStatut"
@@ -1687,7 +1701,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",
-        "description": "Veuillez entrer 'Bearer' [espace] puis votre token dans le champ ci-dessous.\r\n                      Exemple: 'Bearer 12345abcdef'",
+        "description": "Veuillez entrer 'Bearer' [espace] puis votre token dans le champ ci-dessous.\n                      Exemple: 'Bearer 12345abcdef'",
         "name": "Authorization",
         "in": "header"
       }

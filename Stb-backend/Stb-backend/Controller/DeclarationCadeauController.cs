@@ -129,8 +129,8 @@ namespace stb_backend.Controller
 
         // BONNE PRATIQUE : L'endpoint POST reçoit un DTO de création
         [HttpPost]
-        [Authorize(Roles = "Manager,Employe")] // Seuls les Managers et Employes peuvent accéder
-        public async Task<ActionResult<DeclarationCadeauDto>> Create([FromBody] CreateDeclarationCadeauDto cadeauDto)
+        [Authorize(Roles = "Manager,Employe")] // Seuls les Managers et Employes peuvent déclarer des cadeaux
+         public async Task<ActionResult<DeclarationCadeauDto>> Create([FromBody] CreateDeclarationCadeauDto cadeauDto)
         {
             // Récupérer l'ID de l'utilisateur à partir du token, pas du corps de la requête.
             var userIdFromToken = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -184,74 +184,70 @@ namespace stb_backend.Controller
             return CreatedAtAction(nameof(GetById), new { id = createdCadeau.IdCadeaux }, createdCadeauDto);
         }
 
-
         [HttpPut("{id}")]
-        [ProducesResponseType(typeof(DeclarationCadeauDto), 200)]
-        [ProducesResponseType(400)] // Bad Request
-        [ProducesResponseType(403)] // Forbidden
-        [ProducesResponseType(404)] // Not Found
-        public async Task<IActionResult> Update(long id, [FromBody] UpdateDeclarationCadeauDto cadeauDto)
+        public async Task<IActionResult> Update(long id,
+    [FromForm] UpdateDeclarationCadeauDto cadeauDto,
+    [FromForm] List<IFormFile> newFiles,
+    [FromForm] List<int> existingFileIds)
         {
-            // 1. Récupérer l'entité existante pour vérifier son propriétaire
-            var existingCadeau = await _service.GetByIdAsync(id);
-            if (existingCadeau == null)
+            try
             {
-                return NotFound(new { message = $"Aucune déclaration trouvée avec l'ID {id}." });
+                // Validation du ModelState
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState
+                        .Where(x => x.Value.Errors.Count > 0)
+                        .Select(x => new { Field = x.Key, Errors = x.Value.Errors.Select(e => e.ErrorMessage) })
+                        .ToList();
+
+                    return BadRequest(new
+                    {
+                        message = "Données invalides",
+                        errors = errors
+                    });
+                }
+
+                // Vérification des autorisations améliorée
+                var userIdFromToken = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userRole = User.FindFirstValue(ClaimTypes.Role);
+                var existingCadeau = await _service.GetByIdAsync(id);
+
+                if (existingCadeau.IdUser.ToString() != userIdFromToken && userRole != "Manager")
+                {
+                    return Forbid();
+                }
+
+                // Gestion d'erreurs améliorée
+                var updateResult = await _service.UpdateAsync(existingCadeau);
+
+                if (!updateResult)
+                {
+                    return BadRequest(new { message = "Erreur lors de la mise à jour de la déclaration." });
+                }
+
+                // Récupération de l'entité mise à jour pour la réponse
+                var updatedCadeau = await _service.GetByIdAsync(id);
+
+                // Mapping complet avec DocumentFiles
+                var updatedCadeauDto = new DeclarationCadeauDto
+                {
+                    // ... tous les champs mappés
+                    DocumentFiles = updatedCadeau.DocumentFiles?.Select(file => new DocumentFileDto
+                    {
+                        IdFile = file.IdFile,
+                        FileName = file.FileName,
+                        DateUpload = file.DateUpload,
+                        DownloadUrl = $"{Request.Scheme}://{Request.Host}/api/files/download/{file.IdFile}"
+                    }).ToList() ?? new List<DocumentFileDto>()
+                };
+
+                return Ok(updatedCadeauDto);
             }
-
-            // 2. Récupérer l'ID de l'utilisateur depuis le token
-            var userIdFromToken = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            // --- DÉBUT DE LA MODIFICATION DE LA LOGIQUE ---
-
-            // 3. Vérifier si l'utilisateur est le propriétaire de la déclaration, PEU IMPORTE SON RÔLE.
-            if (existingCadeau.IdUser.ToString() != userIdFromToken)
+            catch (Exception ex)
             {
-                // Si l'ID de l'utilisateur du token ne correspond pas à celui du propriétaire,
-                // l'accès est refusé.
-                return Forbid(); // Renvoie une réponse 403 Forbidden
+                Console.WriteLine($"Erreur dans Update: {ex.Message}");
+                return StatusCode(500, new { message = "Erreur interne du serveur lors de la mise à jour." });
             }
-
-            // --- FIN DE LA MODIFICATION DE LA LOGIQUE ---
-
-            // 4. Si l'autorisation est validée, procéder à la mise à jour.
-            //    Mapper les propriétés du DTO vers l'entité.
-            existingCadeau.ValeurEstime = cadeauDto.ValeurEstime;
-            existingCadeau.IdentiteDonneur = cadeauDto.IdentiteDonneur;
-            existingCadeau.TypeRelation = cadeauDto.TypeRelation;
-            existingCadeau.Occasion = cadeauDto.Occasion;
-            existingCadeau.Honneur = cadeauDto.Honneur;
-            existingCadeau.Message = cadeauDto.Message;
-            existingCadeau.Statut = cadeauDto.Statut; // Attention: un employé peut-il changer le statut ? À clarifier.
-            existingCadeau.DateReceptionCadeaux = cadeauDto.DateReceptionCadeaux;
-            existingCadeau.Anonyme = cadeauDto.Anonyme;
-            existingCadeau.Description = cadeauDto.Description;
-
-            await _service.UpdateAsync(existingCadeau);
-
-            // 5. Mapper l'entité mise à jour vers un DTO pour la réponse
-            var updatedCadeauDto = new DeclarationCadeauDto
-            {
-                // ... mappez tous les champs de `existingCadeau` vers le DTO ...
-                IdCadeaux = existingCadeau.IdCadeaux,
-                IdUser = existingCadeau.IdUser,
-                GUID = existingCadeau.GUID,
-                ValeurEstime = existingCadeau.ValeurEstime,
-                IdentiteDonneur = existingCadeau.IdentiteDonneur,
-                TypeRelation = existingCadeau.TypeRelation.ToString(),
-                Occasion = existingCadeau.Occasion,
-                Honneur = existingCadeau.Honneur,
-                DateDeclaration = existingCadeau.DateDeclaration,
-                Message = existingCadeau.Message,
-                Statut = existingCadeau.Statut.ToString(),
-                DateReceptionCadeaux = existingCadeau.DateReceptionCadeaux,
-                Anonyme = existingCadeau.Anonyme,
-                Description = existingCadeau.Description,
-                Archived = existingCadeau.EstArchive
-                // Ne pas oublier les DocumentFiles si nécessaire
-            };
-
-            return Ok(updatedCadeauDto);
         }
 
         [HttpDelete("{id}")]

@@ -119,49 +119,77 @@
         "IsRequired": true
       },
       {
-        "Name": "cadeauDto",
-        "Type": "stb_backend.DTOs.UpdateDeclarationCadeauDto",
-        "IsRequired": true
+        "Name": "ValeurEstime",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdentiteDonneur",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TypeRelation",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Occasion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Honneur",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Statut",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DateReceptionCadeaux",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Anonyme",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NewFiles",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ExistingFileIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "newFiles",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "existingFileIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "stb_backend.DTOs.DeclarationCadeauDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 403
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "stb_backend.Controller.DeclarationCadeauController",
@@ -596,6 +624,36 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "stb_backend.Controller.RoleController",
+    "Method": "CanDeclareGifts",
+    "RelativePath": "api/Role/can-declare-gifts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "stb_backend.Controller.RoleController",
+    "Method": "GetUserPermissions",
+    "RelativePath": "api/Role/permissions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "stb_backend.Controller.RoleController",
+    "Method": "GetAllRoles",
+    "RelativePath": "api/Role/roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

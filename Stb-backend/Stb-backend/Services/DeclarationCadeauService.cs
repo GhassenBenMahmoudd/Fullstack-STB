@@ -37,11 +37,43 @@ namespace stb_backend.Services
 
         public async Task<bool> UpdateAsync(DeclarationCadeau cadeau)
         {
-            _context.Entry(cadeau).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return true;
-        }
+            try
+            {
+                // Récupérer l'entité existante depuis la base de données
+                var existingCadeau = await _context.DeclarationsCadeaux
+                    .Include(d => d.DocumentFiles)
+                    .FirstOrDefaultAsync(d => d.IdCadeaux == cadeau.IdCadeaux);
 
+                if (existingCadeau == null)
+                {
+                    return false;
+                }
+
+                // Mettre à jour les propriétés de l'entité existante
+                existingCadeau.ValeurEstime = cadeau.ValeurEstime;
+                existingCadeau.IdentiteDonneur = cadeau.IdentiteDonneur;
+                existingCadeau.TypeRelation = cadeau.TypeRelation;
+                existingCadeau.Occasion = cadeau.Occasion;
+                existingCadeau.Honneur = cadeau.Honneur;
+                existingCadeau.Message = cadeau.Message;
+                existingCadeau.Statut = cadeau.Statut;
+                existingCadeau.DateReceptionCadeaux = cadeau.DateReceptionCadeaux;
+                existingCadeau.Anonyme = cadeau.Anonyme;
+                existingCadeau.Description = cadeau.Description;
+                existingCadeau.EstArchive = cadeau.EstArchive;
+
+                // Marquer l'entité comme modifiée
+                _context.Entry(existingCadeau).State = EntityState.Modified;
+
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la mise à jour: {ex.Message}");
+                return false;
+            }
+        }
         public async Task<bool> DeleteAsync(long id)
         {
             var entity = await _context.DeclarationsCadeaux.FindAsync(id);

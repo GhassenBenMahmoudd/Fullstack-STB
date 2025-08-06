@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace stb_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class mig6 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,10 +21,7 @@ namespace stb_backend.Migrations
                     Nom = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     NumeroTelephone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
-                    Matricule = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Departement = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,40 +29,21 @@ namespace stb_backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DeclarationsCadeaux",
+                name: "Employes",
                 columns: table => new
                 {
-                    IdCadeaux = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     IdUser = table.Column<long>(type: "bigint", nullable: false),
-                    GUID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ValeurEstime = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdentiteDonneur = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    TypeRelation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Occasion = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Honneur = table.Column<bool>(type: "bit", nullable: false),
-                    DateDeclaration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateReceptionCadeaux = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Anonyme = table.Column<bool>(type: "bit", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    ManagerIdUser = table.Column<long>(type: "bigint", nullable: true)
+                    Matricule = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeclarationsCadeaux", x => x.IdCadeaux);
+                    table.PrimaryKey("PK_Employes", x => x.IdUser);
                     table.ForeignKey(
-                        name: "FK_DeclarationsCadeaux_User_IdUser",
+                        name: "FK_Employes_User_IdUser",
                         column: x => x.IdUser,
                         principalTable: "User",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_DeclarationsCadeaux_User_ManagerIdUser",
-                        column: x => x.ManagerIdUser,
-                        principalTable: "User",
-                        principalColumn: "IdUser");
                 });
 
             migrationBuilder.CreateTable(
@@ -87,9 +65,9 @@ namespace stb_backend.Migrations
                 {
                     table.PrimaryKey("PK_DeclarationsCorruption", x => x.IdCorruption);
                     table.ForeignKey(
-                        name: "FK_DeclarationsCorruption_User_IdUser",
+                        name: "FK_DeclarationsCorruption_Employes_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "User",
+                        principalTable: "Employes",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -111,11 +89,67 @@ namespace stb_backend.Migrations
                 {
                     table.PrimaryKey("PK_DemandesConseil", x => x.IdConseil);
                     table.ForeignKey(
-                        name: "FK_DemandesConseil_User_IdUser",
+                        name: "FK_DemandesConseil_Employes_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "User",
+                        principalTable: "Employes",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Managers",
+                columns: table => new
+                {
+                    IdUser = table.Column<long>(type: "bigint", nullable: false),
+                    Departement = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Managers", x => x.IdUser);
+                    table.ForeignKey(
+                        name: "FK_Managers_Employes_IdUser",
+                        column: x => x.IdUser,
+                        principalTable: "Employes",
+                        principalColumn: "IdUser",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DeclarationsCadeaux",
+                columns: table => new
+                {
+                    IdCadeaux = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdUser = table.Column<long>(type: "bigint", nullable: false),
+                    GUID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ValeurEstime = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IdentiteDonneur = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    TypeRelation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Occasion = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Honneur = table.Column<bool>(type: "bit", nullable: false),
+                    DateDeclaration = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateReceptionCadeaux = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstArchive = table.Column<bool>(type: "bit", nullable: false),
+                    Anonyme = table.Column<bool>(type: "bit", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    ManagerIdUser = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeclarationsCadeaux", x => x.IdCadeaux);
+                    table.ForeignKey(
+                        name: "FK_DeclarationsCadeaux_Employes_IdUser",
+                        column: x => x.IdUser,
+                        principalTable: "Employes",
+                        principalColumn: "IdUser",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DeclarationsCadeaux_Managers_ManagerIdUser",
+                        column: x => x.ManagerIdUser,
+                        principalTable: "Managers",
+                        principalColumn: "IdUser");
                 });
 
             migrationBuilder.CreateTable(
@@ -224,6 +258,12 @@ namespace stb_backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "DemandesConseil");
+
+            migrationBuilder.DropTable(
+                name: "Managers");
+
+            migrationBuilder.DropTable(
+                name: "Employes");
 
             migrationBuilder.DropTable(
                 name: "User");

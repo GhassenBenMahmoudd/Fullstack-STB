@@ -12,8 +12,8 @@ using stb_backend.Data;
 namespace stb_backend.Migrations
 {
     [DbContext(typeof(StbDbContext))]
-    [Migration("20250729113647_NomDeLaMigration")]
-    partial class NomDeLaMigration
+    [Migration("20250805111700_mig6")]
+    partial class mig6
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,9 @@ namespace stb_backend.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("EstArchive")
+                        .HasColumnType("bit");
 
                     b.Property<Guid>("GUID")
                         .HasColumnType("uniqueidentifier");
@@ -250,6 +253,11 @@ namespace stb_backend.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<string>("Prenom")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -270,11 +278,6 @@ namespace stb_backend.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
 
                     b.ToTable("Employes", (string)null);
                 });

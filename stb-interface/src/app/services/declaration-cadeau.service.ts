@@ -8,7 +8,7 @@ import { DeclarationCadeau, DeclarationCadeauPayload } from '../models/declarati
 } )
 export class DeclarationCadeauService {
   // Adaptez le port si nécessaire
-  private readonly apiUrl = 'https://localhost:7048/api/DeclarationCadeau';
+  private  apiUrl = 'https://localhost:7048/api/DeclarationCadeau';
 
   constructor(private http: HttpClient ) { }
 
@@ -43,8 +43,8 @@ export class DeclarationCadeauService {
 }
 
 
-updateWithFiles(id: number, formData: FormData): Observable<any> {
-  return this.http.put(`${this.apiUrl}/declarationscadeaux/upload/${id}`, formData);
+updateWithFiles(id: number, formData: FormData) {
+  return this.http.put(`${this.apiUrl}/${id}`, formData);
 }
 
 }
