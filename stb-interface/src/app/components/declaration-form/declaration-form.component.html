@@ -12,6 +12,7 @@
         <input type="number" id="valeurEstime" class="form-control" formControlName="valeurEstime">
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="typeRelation" class="form-label">Type de Relation</label>
@@ -24,14 +25,27 @@
         <input type="date" id="dateReceptionCadeaux" class="form-control" formControlName="dateReceptionCadeaux">
       </div>
     </div>
+
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
       <textarea id="description" class="form-control" formControlName="description" rows="3"></textarea>
     </div>
+
+    <!-- Upload de fichiers -->
     <div class="mb-3">
-  <label for="documents" class="form-label">Ajouter des documents</label>
-  <input type="file" class="form-control" id="documents" (change)="onFileSelected($event)" multiple>
-</div>
+      <label for="documents" class="form-label">Ajouter des documents</label>
+      <input type="file" class="form-control" id="documents" (change)="onFileSelected($event)" multiple>
+    </div>
+
+    <!-- 📂 Affichage des fichiers existants -->
+    <div class="mt-3" *ngIf="fichiersExistants && fichiersExistants.length > 0">
+      <label class="form-label">Fichiers déjà associés :</label>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let fichier of fichiersExistants">
+          <a [href]="fichier.url" target="_blank">{{ fichier.nom }}</a>
+        </li>
+      </ul>
+    </div>
 
     <div class="mt-4">
       <button type="submit" class="btn btn-success" [disabled]="declarationForm.invalid">

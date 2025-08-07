@@ -16,6 +16,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddControllers()
+
     .AddJsonOptions(options =>
     {
         // Force la conversion des enums en chaînes de caractères.
@@ -85,23 +86,30 @@ builder.Services.AddCors(options =>
                    .AllowAnyMethod();
         });
 });
+// Vérification de la configuration JWT
+var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+var jwtAudience = builder.Configuration["Jwt:Audience"];
+
+if (string.IsNullOrEmpty(jwtKey) || string.IsNullOrEmpty(jwtIssuer) || string.IsNullOrEmpty(jwtAudience))
+    throw new InvalidOperationException("La configuration JWT est incomplète. Vérifiez les clés 'Jwt:Key', 'Jwt:Issuer' et 'Jwt:Audience' dans appsettings.json.");
+
 // --- DÉBUT DE LA CONFIGURATION JWT ---
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-
 .AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
         ValidateIssuer = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidIssuer = jwtIssuer,
         ValidateAudience = true,
-        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidAudience = jwtAudience,
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero
     };
@@ -142,6 +150,7 @@ else
     app.UseHsts();
 }
 app.UseErrorHandlingMiddleware();
+app.UseUserActivityLogging();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles(new StaticFileOptions
@@ -154,9 +163,7 @@ app.UseRouting();
 // ON APPLIQUE LA POLITIQUE CORS
 app.UseCors("AllowAngularApp");
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapRazorPages();
 app.MapControllers(); // ✅ AJOUT
 

@@ -15,6 +15,15 @@ export interface DeclarationCadeau {
   anonyme: boolean;
   description?: string;
   archived: boolean;
+  fichiers?: Fichier[]; // 👈 Ajout
+
+}
+
+// Définition du type Fichier (à adapter selon votre structure réelle)
+export interface Fichier {
+  id: number;
+  nom: string;
+  url: string;
 }
 
 // Type pour les données envoyées à l'API (DTO de création/mise à jour)

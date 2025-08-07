@@ -55,6 +55,7 @@ namespace stb_backend.Services
 
         public async Task<bool> UpdateAsync(DeclarationCadeau cadeau)
         {
+<<<<<<< HEAD
             if (cadeau == null) throw new ArgumentNullException(nameof(cadeau));
 
             var existing = await _context.DeclarationsCadeaux.FindAsync(cadeau.IdCadeaux);
@@ -73,6 +74,10 @@ namespace stb_backend.Services
                 await transaction.RollbackAsync();
                 throw;
             }
+=======
+            _context.DeclarationsCadeaux.Update(cadeau);
+            return await _context.SaveChangesAsync() > 0;
+>>>>>>> 072604d5338ccd68d133a24a0c6538b2cb7d3e70
         }
 
         public async Task<bool> DeleteAsync(long id)

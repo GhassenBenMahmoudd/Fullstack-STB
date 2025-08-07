@@ -2,7 +2,6 @@
 frontend/**/node_modules
 frontend/**/dist
 
-<<<<<<< HEAD
 # === Fichiers de configuration spécifiques à l'IDE et à l'utilisateur ===
 # A ignorer où qu'ils soient dans le projet.
 *.suo
@@ -51,7 +50,6 @@ frontend/**/dist
 # === Fichiers générés par d'autres outils (ex: Resharper) ===
 _ReSharper*/
 *.[Rr]esharper
-=======
 # === .NET ===
 backend/**/bin
 backend/**/obj
@@ -61,4 +59,3 @@ backend/.vs
 *.user
 *.log
 *.env
->>>>>>> ab895d8 (Chore: Ajout d'un .gitignore complet pour débloquer le projet1)

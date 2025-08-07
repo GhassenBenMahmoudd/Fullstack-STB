@@ -7,9 +7,12 @@ using stb_backend.Data;
 using stb_backend.DTOs;
 using stb_backend.Domain;
 using Microsoft.AspNetCore.Authorization;
+<<<<<<< HEAD
 using stb_backend.Services;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
+=======
+>>>>>>> 072604d5338ccd68d133a24a0c6538b2cb7d3e70
 
 [Route("api/[controller]")]
 [ApiController]
@@ -26,8 +29,11 @@ public class AuthController : ControllerBase
         _emailService = emailService;
 
     }
+<<<<<<< HEAD
     private readonly EmailService _emailService;
 
+=======
+>>>>>>> 072604d5338ccd68d133a24a0c6538b2cb7d3e70
     [HttpPost("login")]
     public IActionResult Login([FromBody] LoginDto loginDto)
     {
@@ -65,24 +71,34 @@ public class AuthController : ControllerBase
 
         Employe? user = baseUser as Employe;
         string userRole = "User";
+        string roleDescription = "Utilisateur standard";
 
         if (user is Manager)
+        {
             userRole = "Manager";
+            roleDescription = "Manager - Accès complet à toutes les fonctionnalités";
+        }
         else if (user != null)
+        {
             userRole = "Employe";
+            roleDescription = "Employé - Peut déclarer des cadeaux et consulter ses déclarations";
+        }
 
         var claims = new List<Claim>
-{
-    new Claim("id", baseUser.IdUser.ToString()),
-    new Claim("prenom", baseUser.Prenom),
-    new Claim("nom", baseUser.Nom),
-    new Claim("email", baseUser.Email),
-    new Claim("role", userRole)
-};
-
+    {
+        new Claim(ClaimTypes.NameIdentifier, baseUser.IdUser.ToString()),
+        new Claim(ClaimTypes.Name, $"{baseUser.Prenom} {baseUser.Nom}"),
+        new Claim("prenom", baseUser.Prenom),
+        new Claim("nom", baseUser.Nom),
+        new Claim("email", baseUser.Email),
+        new Claim(ClaimTypes.Role, userRole),
+        new Claim("role", userRole)
+    };
 
         if (user?.Matricule != null)
+        {
             claims.Add(new Claim("matricule", user.Matricule));
+        }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -100,8 +116,18 @@ public class AuthController : ControllerBase
         return Ok(new
         {
             token = tokenString,
-            userName = $"{baseUser.Prenom} {baseUser.Nom}",
-            userRole
+            user = new
+            {
+                id = baseUser.IdUser,
+                prenom = baseUser.Prenom,
+                nom = baseUser.Nom,
+                email = baseUser.Email,
+                matricule = user?.Matricule,
+                role = userRole,
+                roleDescription = roleDescription,
+                permissions = GetUserPermissions(userRole)
+            },
+            message = $"Connexion réussie. Rôle: {userRole}"
         });
     }
     [HttpPost("register")]
@@ -186,7 +212,37 @@ public class AuthController : ControllerBase
     }
 
 
-
-
+    private object GetUserPermissions(string role)
+    {
+        return role switch
+        {
+            "Manager" => new
+            {
+                canDeclareGifts = true,
+                canViewAllDeclarations = true,
+                canUpdateStatus = true,
+                canArchive = true,
+                canDelete = true,
+                canViewReports = true
+            },
+            "Employe" => new
+            {
+                canDeclareGifts = true,
+                canViewAllDeclarations = false,
+                canUpdateStatus = false,
+                canArchive = false,
+                canDelete = false,
+                canViewReports = false
+            },
+            _ => new
+            {     
+                canDeclareGifts = false,
+                canViewAllDeclarations = false,
+                canUpdateStatus = false,
+                canArchive = false,
+                canDelete = false,
+                canViewReports = false
+            }
+        };
+    }
 }
-
