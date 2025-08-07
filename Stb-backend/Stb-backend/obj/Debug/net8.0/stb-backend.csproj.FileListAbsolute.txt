@@ -351,10 +351,10 @@ C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\o
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.stb-backend.props
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.stb-backend.props
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\stb-back.AA808475.Up2Date
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\stb-backend.dll
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\refint\stb-backend.dll
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\stb-backend.pdb
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\stb-backend.genruntimeconfig.cache
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\ref\stb-backend.dll
+C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

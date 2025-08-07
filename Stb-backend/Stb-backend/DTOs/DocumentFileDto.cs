@@ -4,6 +4,8 @@
     {
         public long IdFile { get; set; }
         public string FileName { get; set; }
+        public string FilePath { get; set; }
+
 
         // On expose l'URL de téléchargement plutôt que le chemin physique du serveur
         public string DownloadUrl { get; set; }

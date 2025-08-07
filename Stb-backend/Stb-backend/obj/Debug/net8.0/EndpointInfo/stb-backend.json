@@ -79,26 +79,117 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateDeclarationCadeauDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDeclarationCadeauDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateDeclarationCadeauDto"
+                "required": [
+                  "DateReceptionCadeaux",
+                  "IdentiteDonneur",
+                  "IdUser",
+                  "Statut",
+                  "TypeRelation",
+                  "ValeurEstime"
+                ],
+                "type": "object",
+                "properties": {
+                  "IdUser": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "ValeurEstime": {
+                    "minimum": 0,01,
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "IdentiteDonneur": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "TypeRelation": {
+                    "$ref": "#/components/schemas/TypeRelation"
+                  },
+                  "Occasion": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Honneur": {
+                    "type": "boolean"
+                  },
+                  "Message": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Statut": {
+                    "$ref": "#/components/schemas/Statut"
+                  },
+                  "DateReceptionCadeaux": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Anonyme": {
+                    "type": "boolean"
+                  },
+                  "Description": {
+                    "maxLength": 1000,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "IdUser": {
+                  "style": "form"
+                },
+                "ValeurEstime": {
+                  "style": "form"
+                },
+                "IdentiteDonneur": {
+                  "style": "form"
+                },
+                "TypeRelation": {
+                  "style": "form"
+                },
+                "Occasion": {
+                  "style": "form"
+                },
+                "Honneur": {
+                  "style": "form"
+                },
+                "Message": {
+                  "style": "form"
+                },
+                "Statut": {
+                  "style": "form"
+                },
+                "DateReceptionCadeaux": {
+                  "style": "form"
+                },
+                "Anonyme": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Files": {
+                  "style": "form"
+                }
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -113,6 +204,46 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DeclarationCadeauDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -582,127 +713,6 @@
         }
       }
     },
-    "/api/DeclarationCadeau/upload": {
-      "post": {
-        "tags": [
-          "DeclarationCadeau"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "DateReceptionCadeaux",
-                  "IdentiteDonneur",
-                  "IdUser",
-                  "Statut",
-                  "TypeRelation",
-                  "ValeurEstime"
-                ],
-                "type": "object",
-                "properties": {
-                  "IdUser": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
-                  "ValeurEstime": {
-                    "minimum": 0,01,
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "IdentiteDonneur": {
-                    "maxLength": 255,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "TypeRelation": {
-                    "$ref": "#/components/schemas/TypeRelation"
-                  },
-                  "Occasion": {
-                    "maxLength": 255,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Honneur": {
-                    "type": "boolean"
-                  },
-                  "Message": {
-                    "maxLength": 500,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "Statut": {
-                    "$ref": "#/components/schemas/Statut"
-                  },
-                  "DateReceptionCadeaux": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "Anonyme": {
-                    "type": "boolean"
-                  },
-                  "Description": {
-                    "maxLength": 1000,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "files": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "format": "binary"
-                    }
-                  }
-                }
-              },
-              "encoding": {
-                "IdUser": {
-                  "style": "form"
-                },
-                "ValeurEstime": {
-                  "style": "form"
-                },
-                "IdentiteDonneur": {
-                  "style": "form"
-                },
-                "TypeRelation": {
-                  "style": "form"
-                },
-                "Occasion": {
-                  "style": "form"
-                },
-                "Honneur": {
-                  "style": "form"
-                },
-                "Message": {
-                  "style": "form"
-                },
-                "Statut": {
-                  "style": "form"
-                },
-                "DateReceptionCadeaux": {
-                  "style": "form"
-                },
-                "Anonyme": {
-                  "style": "form"
-                },
-                "Description": {
-                  "style": "form"
-                },
-                "files": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/DeclarationCorruption": {
       "get": {
         "tags": [
@@ -1076,68 +1086,6 @@
   },
   "components": {
     "schemas": {
-      "CreateDeclarationCadeauDto": {
-        "required": [
-          "dateReceptionCadeaux",
-          "identiteDonneur",
-          "idUser",
-          "statut",
-          "typeRelation",
-          "valeurEstime"
-        ],
-        "type": "object",
-        "properties": {
-          "idUser": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "valeurEstime": {
-            "minimum": 0,01,
-            "type": "number",
-            "format": "double"
-          },
-          "identiteDonneur": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string"
-          },
-          "typeRelation": {
-            "$ref": "#/components/schemas/TypeRelation"
-          },
-          "occasion": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "honneur": {
-            "type": "boolean"
-          },
-          "message": {
-            "maxLength": 500,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "statut": {
-            "$ref": "#/components/schemas/Statut"
-          },
-          "dateReceptionCadeaux": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "anonyme": {
-            "type": "boolean"
-          },
-          "description": {
-            "maxLength": 1000,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "DeclarationCadeau": {
         "required": [
           "dateDeclaration",
@@ -1460,6 +1408,10 @@
             "format": "int64"
           },
           "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "filePath": {
             "type": "string",
             "nullable": true
           },

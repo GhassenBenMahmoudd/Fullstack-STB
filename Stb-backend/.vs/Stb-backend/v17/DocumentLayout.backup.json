@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\interfaces\\ideclarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\interfaces\\ideclarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\services\\declarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\services\\declarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\data\\stbdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\data\\stbdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\controller\\declarationcadeaucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\controller\\declarationcadeaucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\dtos\\documentfiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\documentfiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\dtos\\declarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\declarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\models\\declarationcadeau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\models\\declarationcadeau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\interfaces\\idocumentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\interfaces\\idocumentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\dtos\\createdeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\createdeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\models\\documentfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\models\\documentfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\controller\\demandeconseilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,38 +51,18 @@
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\interfaces\\ideclarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\interfaces\\ideclarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\models\\declarationcadeau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\models\\declarationcadeau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\models\\documentfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\models\\documentfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\services\\documentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\services\\documentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\interfaces\\idocumentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\interfaces\\idocumentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DocumentFile.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DeclarationsCadeaux.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\services\\declarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\services\\declarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\models\\employe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -69,10 +85,6 @@
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\models\\demandeconseil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\dtos\\createdeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\createdeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.User.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
@@ -82,10 +94,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\data\\stbdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\data\\stbdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|c:\\users\\ghassen\\downloads\\fullstack-stb\\fullstack-stb\\stb-backend\\stb-backend\\models\\manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,11 +107,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "DocumentFileDto.cs",
+              "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\DocumentFileDto.cs",
+              "RelativeDocumentMoniker": "Stb-backend\\DTOs\\DocumentFileDto.cs",
+              "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\DocumentFileDto.cs",
+              "RelativeToolTip": "Stb-backend\\DTOs\\DocumentFileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T15:28:23.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DeclarationCadeauDto.cs",
+              "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
+              "RelativeDocumentMoniker": "Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
+              "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
+              "RelativeToolTip": "Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T15:35:24.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "DemandeConseilController.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Controller\\DemandeConseilController.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Controller\\DemandeConseilController.cs",
@@ -111,12 +145,11 @@
               "RelativeToolTip": "Stb-backend\\Controller\\DemandeConseilController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T18:41:51.542Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T18:41:51.542Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "IDeclarationCadeauService.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Interfaces\\IDeclarationCadeauService.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Interfaces\\IDeclarationCadeauService.cs",
@@ -129,40 +162,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "dbo.DocumentFile [Donn\u00E9es]",
+              "DocumentIndex": 14,
+              "Title": "dbo.DocumentFile.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DocumentFile.sql",
-              "ToolTip": "dbo.DocumentFile [Donn\u00E9es]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DocumentFile.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-08-04T18:00:27.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T18:00:27.875Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "dbo.DeclarationsCadeaux [Donn\u00E9es]",
+              "DocumentIndex": 15,
+              "Title": "dbo.DeclarationsCadeaux.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DeclarationsCadeaux.sql",
-              "ToolTip": "dbo.DeclarationsCadeaux [Donn\u00E9es]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DeclarationsCadeaux.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-08-04T18:00:19.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T18:00:19.248Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "DeclarationCadeauService.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Services\\DeclarationCadeauService.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Services\\DeclarationCadeauService.cs",
               "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Services\\DeclarationCadeauService.cs",
               "RelativeToolTip": "Stb-backend\\Services\\DeclarationCadeauService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAowGoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-04T17:58:37.681Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "DocumentFileService.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Services\\DocumentFileService.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Services\\DocumentFileService.cs",
@@ -170,12 +201,11 @@
               "RelativeToolTip": "Stb-backend\\Services\\DocumentFileService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T17:44:55.867Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T17:44:55.867Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "Statut.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\Statut.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\Statut.cs",
@@ -183,12 +213,11 @@
               "RelativeToolTip": "Stb-backend\\Models\\Statut.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T17:44:23.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T17:44:23.019Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "DeclarationCorruption.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\DeclarationCorruption.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\DeclarationCorruption.cs",
@@ -196,12 +225,11 @@
               "RelativeToolTip": "Stb-backend\\Models\\DeclarationCorruption.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T17:44:18.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T17:44:18.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "DemandeConseil.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\DemandeConseil.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\DemandeConseil.cs",
@@ -209,12 +237,11 @@
               "RelativeToolTip": "Stb-backend\\Models\\DemandeConseil.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T17:44:16.915Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T17:44:16.915Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "IDocumentFileService.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Interfaces\\IDocumentFileService.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Interfaces\\IDocumentFileService.cs",
@@ -227,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Program.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Program.cs",
@@ -235,51 +262,50 @@
               "RelativeToolTip": "Stb-backend\\Program.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAAAswJsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T17:41:39.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T17:41:39.46Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 8,
               "Title": "CreateDeclarationCadeauDto.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
               "RelativeDocumentMoniker": "Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
               "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
               "RelativeToolTip": "Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAgwCkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-04T17:40:46.165Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "DeclarationCadeauController.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Controller\\DeclarationCadeauController.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Controller\\DeclarationCadeauController.cs",
-              "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Controller\\DeclarationCadeauController.cs*",
-              "RelativeToolTip": "Stb-backend\\Controller\\DeclarationCadeauController.cs*",
-              "ViewState": "AgIAALQBAAAAAAAAAAAswMYBAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Controller\\DeclarationCadeauController.cs",
+              "RelativeToolTip": "Stb-backend\\Controller\\DeclarationCadeauController.cs",
+              "ViewState": "AgIAAGsBAAAAAAAAAAAswIoBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-04T16:57:46.286Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "DocumentFile.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\DocumentFile.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\DocumentFile.cs",
               "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\DocumentFile.cs",
               "RelativeToolTip": "Stb-backend\\Models\\DocumentFile.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAcwAcAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-04T17:34:25.259Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "TypeDomaine.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\TypeDomaine.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\TypeDomaine.cs",
@@ -287,48 +313,46 @@
               "RelativeToolTip": "Stb-backend\\Models\\TypeDomaine.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T17:34:17.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T17:34:17.596Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DeclarationCadeau.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\DeclarationCadeau.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\DeclarationCadeau.cs",
               "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\DeclarationCadeau.cs",
               "RelativeToolTip": "Stb-backend\\Models\\DeclarationCadeau.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAgwDkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwDkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-04T17:33:59.519Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "dbo.User [Donn\u00E9es]",
+              "DocumentIndex": 21,
+              "Title": "dbo.User.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.User.sql",
-              "ToolTip": "dbo.User [Donn\u00E9es]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.User.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-08-04T15:54:13.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T15:54:13.905Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 2,
               "Title": "StbDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Data\\StbDbContext.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Data\\StbDbContext.cs",
               "ToolTip": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Data\\StbDbContext.cs",
               "RelativeToolTip": "Stb-backend\\Data\\StbDbContext.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAgwD8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAIAwwBwAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-04T15:50:01.154Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Manager.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\Manager.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\Manager.cs",
@@ -336,12 +360,11 @@
               "RelativeToolTip": "Stb-backend\\Models\\Manager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T15:48:27.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T15:48:27.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "Employe.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\Employe.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\Employe.cs",
@@ -349,12 +372,11 @@
               "RelativeToolTip": "Stb-backend\\Models\\Employe.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T15:48:20.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T15:48:20.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Models\\User.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Models\\User.cs",
@@ -362,12 +384,11 @@
               "RelativeToolTip": "Stb-backend\\Models\\User.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAswCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T15:47:38.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T15:47:38.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\DTOs\\LoginDto.cs",
               "RelativeDocumentMoniker": "Stb-backend\\DTOs\\LoginDto.cs",
@@ -375,12 +396,11 @@
               "RelativeToolTip": "Stb-backend\\DTOs\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T15:47:31.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T15:47:31.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\ghassen\\Downloads\\fullstack-STB\\fullstack-STB\\Stb-backend\\Stb-backend\\Controller\\AuthController.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Controller\\AuthController.cs",
@@ -388,8 +408,7 @@
               "RelativeToolTip": "Stb-backend\\Controller\\AuthController.cs",
               "ViewState": "AgIAAFcAAAAAAAAAAAAYwEMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T15:27:53.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T15:27:53.523Z"
             }
           ]
         }

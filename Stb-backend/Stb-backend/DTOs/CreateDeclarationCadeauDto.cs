@@ -38,5 +38,8 @@ namespace stb_backend.DTOs
 
         [StringLength(1000)]
         public string? Description { get; set; }
+
+        [DataType(DataType.Upload)]
+        public List<IFormFile>? Files { get; set; }
     }
 }
