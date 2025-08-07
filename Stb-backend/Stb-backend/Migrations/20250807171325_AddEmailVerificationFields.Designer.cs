@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using stb_backend.Data;
 
@@ -11,9 +12,11 @@ using stb_backend.Data;
 namespace stb_backend.Migrations
 {
     [DbContext(typeof(StbDbContext))]
-    partial class StbDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250807171325_AddEmailVerificationFields")]
+    partial class AddEmailVerificationFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,9 +249,6 @@ namespace stb_backend.Migrations
                     b.Property<string>("EmailVerificationToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsVerified")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Nom")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -268,12 +268,6 @@ namespace stb_backend.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("VerificationToken")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("VerificationTokenExpiry")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("IdUser");
 

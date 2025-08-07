@@ -29,6 +29,12 @@ namespace stb_backend.Domain
         [Required]
         [StringLength(255)]
         public string Password { get; set; }
+        public bool EmailConfirmed { get; set; } = false;
+        public string? EmailVerificationToken { get; set; }
+        public string? VerificationToken { get; set; }
+        public DateTime? VerificationTokenExpiry { get; set; }
+        public bool IsVerified { get; set; } = false;
+
     }
 }
 

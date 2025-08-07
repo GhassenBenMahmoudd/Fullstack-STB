@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 // Imports nécessaires pour un composant standalone avec des formulaires
@@ -12,7 +12,8 @@ import { LoginDto } from '../../models/LoginDto';
   standalone: true,
   imports: [
     CommonModule, // Pour *ngIf, etc.
-    FormsModule   // Pour ngModel, ngForm, etc.
+    FormsModule,
+    RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -80,4 +81,17 @@ export class LoginComponent {
       }
     });
   }
+ngOnInit() {
+  if (typeof document !== 'undefined') {
+    document.body.classList.add('no-header');
+  }
+}
+
+ngOnDestroy() {
+  if (typeof document !== 'undefined') {
+    document.body.classList.remove('no-header');
+  }
+}
+
+
 }

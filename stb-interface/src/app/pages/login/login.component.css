@@ -1,0 +1,11 @@
+.h-100vh {
+  height: 100vh;
+}
+@media (max-width: 991.98px) {
+  .h-100vh {
+    height: 200px; /* hauteur réduite en mobile */
+  }
+}
+.no-header app-header {
+  display: none !important;
+}

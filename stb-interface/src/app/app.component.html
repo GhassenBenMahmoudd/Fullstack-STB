@@ -2,7 +2,7 @@
 
 <!-- MAIN WRAPPER -->
 <div class="main-wrapper">
-    <app-header></app-header>
+<app-header *ngIf="!router.url.includes('/login') && !router.url.includes('/register')"></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
 </div>

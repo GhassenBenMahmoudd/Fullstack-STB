@@ -5,12 +5,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DeclarationListComponent } from './components/declaration-list/declaration-list.component';
 import { DeclarationDetailComponent } from './declarations/declaration-detail/declaration-detail.component';
+import { RegisterComponent } from './register/register.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 export const routes: Routes = [
   { 
     path: 'login', 
     component: LoginComponent 
   },
+    { path: 'register', component: RegisterComponent },
+{ path: 'verify-email', component: VerifyEmailComponent },
+
   { 
     path: 'home', // Une route explicite pour la page d'accueil
     component: HomeComponent 

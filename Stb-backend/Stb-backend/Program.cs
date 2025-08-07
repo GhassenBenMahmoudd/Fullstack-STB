@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddAuthorization();
+builder.Services.AddScoped<EmailService>();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

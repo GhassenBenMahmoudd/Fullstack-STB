@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode'; // npm install jwt-decode
 import { environment } from '../../environments/environment';
 import { LoginDto } from '../models/LoginDto';
+import { RegisterDto } from '../models/RegisterDto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,9 @@ import { LoginDto } from '../models/LoginDto';
 export class AuthService {
   private tokenKey = 'auth_token';
   private apiUrl = `${environment.apiUrl}/Auth`;
+
+  // Ajout de userSubject pour suivre l'utilisateur courant
+  public userSubject = new BehaviorSubject<any>(this.getCurrentUser());
 
   // BehaviorSubject pour suivre l'état de connexion en temps réel
   private userRoleSubject = new BehaviorSubject<string | null>(this.getRoleFromToken());
@@ -79,7 +83,18 @@ login(loginData: LoginDto): Observable<any> {
     })
   );
 }
+register(data: RegisterDto): Observable<any> {
+return this.http.post(`${this.apiUrl}/register`, data);
+}
+setUser(data: { token: string, user: any }) {
+  localStorage.setItem('token', data.token);
+  localStorage.setItem('user', JSON.stringify(data.user));
+  this.userSubject.next(data.user);
+}
 
+verifyEmail(token: string): Observable<any> {
+  return this.http.get(`${this.apiUrl}/auth/verify-email?token=${token}`);
+}
 
   isLoggedIn(): boolean {
     const token = this.getToken();
