@@ -185,14 +185,13 @@ namespace stb_backend.Controller
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(long id,
-    [FromForm] UpdateDeclarationCadeauDto cadeauDto,
-    [FromForm] List<IFormFile> newFiles,
-    [FromForm] List<int> existingFileIds)
+       public async Task<IActionResult> Update(long id,
+        [FromForm] UpdateDeclarationCadeauDto cadeauDto,
+        [FromForm] List<IFormFile> newFiles,
+        [FromForm] List<int> existingFileIds) // Change List<int> to List<long>
         {
             try
             {
-                // Validation du ModelState
                 if (!ModelState.IsValid)
                 {
                     var errors = ModelState
@@ -200,38 +199,57 @@ namespace stb_backend.Controller
                         .Select(x => new { Field = x.Key, Errors = x.Value.Errors.Select(e => e.ErrorMessage) })
                         .ToList();
 
-                    return BadRequest(new
-                    {
-                        message = "Données invalides",
-                        errors = errors
-                    });
+                    return BadRequest(new { message = "Données invalides", errors });
                 }
 
-                // Vérification des autorisations améliorée
                 var userIdFromToken = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var userRole = User.FindFirstValue(ClaimTypes.Role);
                 var existingCadeau = await _service.GetByIdAsync(id);
 
+                if (existingCadeau == null)
+                    return NotFound();
+
                 if (existingCadeau.IdUser.ToString() != userIdFromToken && userRole != "Manager")
-                {
                     return Forbid();
-                }
 
-                // Gestion d'erreurs améliorée
+                // 🛠️ CORRECTION ICI : Appliquer les changements à l’objet existant
+                existingCadeau.ValeurEstime = cadeauDto.ValeurEstime;
+                existingCadeau.IdentiteDonneur = cadeauDto.IdentiteDonneur;
+                existingCadeau.TypeRelation = cadeauDto.TypeRelation;
+                existingCadeau.Occasion = cadeauDto.Occasion;
+                existingCadeau.Honneur = cadeauDto.Honneur;
+                existingCadeau.Message = cadeauDto.Message;
+                existingCadeau.Statut = cadeauDto.Statut;
+                existingCadeau.DateReceptionCadeaux = cadeauDto.DateReceptionCadeaux;
+                existingCadeau.Anonyme = cadeauDto.Anonyme;
+                existingCadeau.Description = cadeauDto.Description;
+
+                // Gérer les fichiers associés
+                await _documentService.UpdateAsync(existingCadeau.IdCadeaux, newFiles, existingFileIds.Select(id => (long)id).ToList());
+
                 var updateResult = await _service.UpdateAsync(existingCadeau);
-
                 if (!updateResult)
-                {
                     return BadRequest(new { message = "Erreur lors de la mise à jour de la déclaration." });
-                }
 
-                // Récupération de l'entité mise à jour pour la réponse
+                // Recharger l'objet mis à jour pour la réponse
                 var updatedCadeau = await _service.GetByIdAsync(id);
-
-                // Mapping complet avec DocumentFiles
                 var updatedCadeauDto = new DeclarationCadeauDto
                 {
-                    // ... tous les champs mappés
+                    IdCadeaux = updatedCadeau.IdCadeaux,
+                    IdUser = updatedCadeau.IdUser,
+                    GUID = updatedCadeau.GUID,
+                    ValeurEstime = updatedCadeau.ValeurEstime,
+                    IdentiteDonneur = updatedCadeau.IdentiteDonneur,
+                    TypeRelation = updatedCadeau.TypeRelation.ToString(),
+                    Occasion = updatedCadeau.Occasion,
+                    Honneur = updatedCadeau.Honneur,
+                    DateDeclaration = updatedCadeau.DateDeclaration,
+                    Message = updatedCadeau.Message,
+                    Statut = updatedCadeau.Statut.ToString(),
+                    DateReceptionCadeaux = updatedCadeau.DateReceptionCadeaux,
+                    Anonyme = updatedCadeau.Anonyme,
+                    Description = updatedCadeau.Description,
+                    Archived = updatedCadeau.EstArchive,
                     DocumentFiles = updatedCadeau.DocumentFiles?.Select(file => new DocumentFileDto
                     {
                         IdFile = file.IdFile,
@@ -389,8 +407,16 @@ namespace stb_backend.Controller
             // 7. Renvoyer une réponse de succès avec l'objet mis à jour
             return Ok(updatedDto);
         }
+        /// <summary>
+        /// Créer une déclaration de cadeau avec fichiers.
+        /// </summary>
+        /// <param name="dto">Les données de la déclaration.</param>
+        /// <param name="files">Les fichiers à uploader.</param>
+        /// <returns>Un message de succès ou d'erreur.</returns>
         [Authorize]
         [HttpPost("upload")]
+        [Consumes("multipart/form-data")]
+        [ProducesResponseType(typeof(object), 200)]
         public async Task<IActionResult> Upload([FromForm] CreateDeclarationCadeauDto dto, [FromForm] List<IFormFile> files)
         {
             var userIdFromToken = User.FindFirstValue(ClaimTypes.NameIdentifier);

@@ -3,28 +3,35 @@
   "WorkspaceRootPath": "D:\\Fullstack-STB-v3\\Stb-backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DeclarationsCadeaux.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\services\\documentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\services\\documentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\controller\\declarationcadeaucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\controller\\declarationcadeaucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\dtos\\declarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\declarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\interfaces\\idocumentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\interfaces\\idocumentfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\models\\declarationcadeau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\models\\declarationcadeau.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\dtos\\updatestatutdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\updatestatutdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\dtos\\updatedeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\updatedeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\services\\declarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\services\\declarationcadeauservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\dtos\\createdeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\createdeclarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\dtos\\updatestatutdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\updatestatutdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\dtos\\declarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|solutionrelative:stb-backend\\dtos\\declarationcadeaudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C03AE7E4-39A5-4CAD-A628-5F794646CA6C}|stb-backend\\stb-backend.csproj|d:\\fullstack-stb-v3\\stb-backend\\stb-backend\\controller\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -32,15 +39,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.Managers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.Employes.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.User.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,32 +48,55 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DeclarationCadeauService.cs",
-              "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Services\\DeclarationCadeauService.cs",
-              "RelativeDocumentMoniker": "Stb-backend\\Services\\DeclarationCadeauService.cs",
-              "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Services\\DeclarationCadeauService.cs",
-              "RelativeToolTip": "Stb-backend\\Services\\DeclarationCadeauService.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAADwv0sAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "dbo.DeclarationsCadeaux [Donn\u00E9es]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.DeclarationsCadeaux.sql",
+              "ToolTip": "dbo.DeclarationsCadeaux [Donn\u00E9es]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-08-07T14:31:57.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DocumentFileService.cs",
+              "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Services\\DocumentFileService.cs",
+              "RelativeDocumentMoniker": "Stb-backend\\Services\\DocumentFileService.cs",
+              "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Services\\DocumentFileService.cs",
+              "RelativeToolTip": "Stb-backend\\Services\\DocumentFileService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T16:59:09.643Z",
+              "WhenOpened": "2025-08-07T14:10:53.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IDocumentFileService.cs",
+              "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Interfaces\\IDocumentFileService.cs",
+              "RelativeDocumentMoniker": "Stb-backend\\Interfaces\\IDocumentFileService.cs",
+              "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Interfaces\\IDocumentFileService.cs",
+              "RelativeToolTip": "Stb-backend\\Interfaces\\IDocumentFileService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIAwwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T14:08:17.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "CreateDeclarationCadeauDto.cs",
-              "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
-              "RelativeDocumentMoniker": "Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
-              "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
-              "RelativeToolTip": "Stb-backend\\DTOs\\CreateDeclarationCadeauDto.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Title": "DeclarationCadeau.cs",
+              "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Models\\DeclarationCadeau.cs",
+              "RelativeDocumentMoniker": "Stb-backend\\Models\\DeclarationCadeau.cs",
+              "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Models\\DeclarationCadeau.cs",
+              "RelativeToolTip": "Stb-backend\\Models\\DeclarationCadeau.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T16:51:45.941Z",
+              "WhenOpened": "2025-08-07T13:51:52.512Z",
               "EditorCaption": ""
             },
             {
@@ -93,20 +114,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "UpdateDeclarationCadeauDto.cs",
               "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\DTOs\\UpdateDeclarationCadeauDto.cs",
               "RelativeDocumentMoniker": "Stb-backend\\DTOs\\UpdateDeclarationCadeauDto.cs",
               "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\DTOs\\UpdateDeclarationCadeauDto.cs",
               "RelativeToolTip": "Stb-backend\\DTOs\\UpdateDeclarationCadeauDto.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAACYAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-06T16:47:21.87Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "DeclarationCadeauDto.cs",
               "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
               "RelativeDocumentMoniker": "Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
@@ -114,25 +135,24 @@
               "RelativeToolTip": "Stb-backend\\DTOs\\DeclarationCadeauDto.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAswBcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T16:47:01.349Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-06T16:47:01.349Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DeclarationCadeauController.cs",
               "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Controller\\DeclarationCadeauController.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Controller\\DeclarationCadeauController.cs",
               "ToolTip": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Controller\\DeclarationCadeauController.cs",
               "RelativeToolTip": "Stb-backend\\Controller\\DeclarationCadeauController.cs",
-              "ViewState": "AgIAALIBAAAAAAAAAAAmwMIBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJ0BAAAAAAAAAAAUwLsAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-06T16:42:30.637Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\Fullstack-STB-v3\\Stb-backend\\Stb-backend\\Controller\\AuthController.cs",
               "RelativeDocumentMoniker": "Stb-backend\\Controller\\AuthController.cs",
@@ -140,45 +160,17 @@
               "RelativeToolTip": "Stb-backend\\Controller\\AuthController.cs",
               "ViewState": "AgIAAG4AAAAAAAAAAAAuwJgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T16:17:14.479Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-06T16:17:14.479Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ViewState": "AgIAAHcUAAAAAAAAAADwvxEVAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2025-08-06T16:17:07.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "dbo.Employes.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.Employes.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.Employes.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-08-06T15:17:00.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "dbo.Managers.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.Managers.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.Managers.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-08-06T15:16:25.706Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "dbo.User.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.User.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/StbDbContext/True/SqlTable/dbo.User.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-08-06T15:16:19.607Z"
             }
           ]
         }

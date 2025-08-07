@@ -94,23 +94,26 @@ onFileSelected(event: Event): void {
 
   const formData = new FormData();
 
-  // 1. Ajouter les données de la déclaration sous forme JSON stringifiée
-  const cadeauDto = { ...this.declarationForm.value };
-  formData.append('cadeauDto', JSON.stringify(cadeauDto));
+  // Ajoute chaque champ du formulaire séparément dans le FormData
+ Object.entries(this.declarationForm.value).forEach(([key, value]) => {
+  // Pour les booléens, envoie 'true' ou 'false' en string
+  if (typeof value === 'boolean') {
+    formData.append(key, value ? 'true' : 'false');
+  } else if (value instanceof Date) {
+    formData.append(key, value.toISOString());
+  } else if (value !== null && value !== undefined) {
+    formData.append(key, String(value));
+  } else {
+    formData.append(key, '');
+  }
+});
 
-  // 2. Ajouter les fichiers sélectionnés sous le champ 'newFiles'
+  // Ajoute les fichiers sous le champ 'files'
   this.selectedFiles.forEach(file => {
-    formData.append('newFiles', file); // 'newFiles' pour chaque fichier
+    formData.append('files', file);
   });
 
-  // 3. Ajouter les IDs des fichiers existants à garder sous 'existingFileIds'
-  this.fichiersExistants.forEach(fichier => {
-    if (fichier.id) {
-      formData.append('existingFileIds', fichier.id.toString());
-    }
-  });
-
-  // 4. Appeler la méthode update ou create selon le mode
+  // Appelle la bonne méthode selon le mode
   const action = this.isEditMode && this.currentId
     ? this.declarationService.updateWithFiles(this.currentId, formData)
     : this.declarationService.createWithFiles(formData);
