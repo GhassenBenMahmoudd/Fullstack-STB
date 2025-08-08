@@ -14,101 +14,41 @@ namespace stb_backend.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<DeclarationCadeau>> GetAllAsync(bool includeFiles = true)
+        public async Task<IEnumerable<DeclarationCadeau>> GetAllAsync()
         {
-            var query = _context.DeclarationsCadeaux.AsQueryable();
-            if (includeFiles)
-            {
-                query = query.Include(d => d.DocumentFiles);
-            }
-            return await query.ToListAsync();
+            return await _context.DeclarationsCadeaux
+                                 .Include(d => d.DocumentFiles)
+                                 .ToListAsync();
         }
 
-        public async Task<DeclarationCadeau?> GetByIdAsync(long id, bool includeFiles = true)
+        public async Task<DeclarationCadeau?> GetByIdAsync(long id)
         {
-            var query = _context.DeclarationsCadeaux.AsQueryable();
-            if (includeFiles)
-            {
-                query = query.Include(d => d.DocumentFiles);
-            }
-            return await query.FirstOrDefaultAsync(d => d.IdCadeaux == id);
+            return await _context.DeclarationsCadeaux
+                .Include(d => d.DocumentFiles)
+                .FirstOrDefaultAsync(d => d.IdCadeaux == id);
         }
 
         public async Task<DeclarationCadeau> CreateAsync(DeclarationCadeau cadeau)
         {
-            if (cadeau == null) throw new ArgumentNullException(nameof(cadeau));
-
-            using var transaction = await _context.Database.BeginTransactionAsync();
-            try
-            {
-                _context.DeclarationsCadeaux.Add(cadeau);
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-                return cadeau;
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
+            _context.DeclarationsCadeaux.Add(cadeau);
+            await _context.SaveChangesAsync();
+            return cadeau;
         }
 
         public async Task<bool> UpdateAsync(DeclarationCadeau cadeau)
         {
-<<<<<<< HEAD
-            if (cadeau == null) throw new ArgumentNullException(nameof(cadeau));
-
-            var existing = await _context.DeclarationsCadeaux.FindAsync(cadeau.IdCadeaux);
-            if (existing == null) return false;
-
-            using var transaction = await _context.Database.BeginTransactionAsync();
-            try
-            {
-                _context.Entry(existing).CurrentValues.SetValues(cadeau);
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-                return true;
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
-=======
             _context.DeclarationsCadeaux.Update(cadeau);
             return await _context.SaveChangesAsync() > 0;
->>>>>>> 072604d5338ccd68d133a24a0c6538b2cb7d3e70
         }
 
         public async Task<bool> DeleteAsync(long id)
         {
-            var entity = await _context.DeclarationsCadeaux
-                .Include(d => d.DocumentFiles)
-                .FirstOrDefaultAsync(d => d.IdCadeaux == id);
+            var entity = await _context.DeclarationsCadeaux.FindAsync(id);
             if (entity == null) return false;
 
-            using var transaction = await _context.Database.BeginTransactionAsync();
-            try
-            {
-                foreach (var file in entity.DocumentFiles)
-                {
-                    if (File.Exists(file.FilePath))
-                    {
-                        File.Delete(file.FilePath);
-                    }
-                }
-                _context.DeclarationsCadeaux.Remove(entity);
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-                return true;
-            }
-            catch
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
+            _context.DeclarationsCadeaux.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
         }
-
-       
     }
 }

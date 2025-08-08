@@ -7,9 +7,11 @@ import { environment } from '../../environments/environment';
 import { LoginDto } from '../models/LoginDto';
 import { RegisterDto } from '../models/RegisterDto';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private tokenKey = 'auth_token';
   private apiUrl = `${environment.apiUrl}/Auth`;
@@ -46,6 +48,10 @@ export class AuthService {
   
 }
 
+setUserFromToken(token: string) {
+    localStorage.setItem(this.tokenKey, token);
+    this.currentUserSubject.next(this.getCurrentUser());
+}
 
   // Méthode de connexion avec matricule (compatibilité)
   loginWithMatricule(matricule: string, password: string): Observable<any> {

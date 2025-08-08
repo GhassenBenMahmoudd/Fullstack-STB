@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,14 +17,19 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddControllers()
-
-    .AddJsonOptions(options =>
+        .AddJsonOptions(options =>
     {
         // Force la conversion des enums en chaînes de caractères.
         options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
         // Parfois nécessaire, indique comment gérer les noms de propriétés.
         options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
-    });
+    }
+    );
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug(); // Logs détaillés dans la console
+builder.Logging.SetMinimumLevel(LogLevel.Debug); // Niveau minimal de logs
 // Enregistrement de ton service ici ⬇
 builder.Services.AddScoped<IDeclarationCadeauService, DeclarationCadeauService>();
 
@@ -118,7 +124,23 @@ builder.Services.AddScoped<IDocumentFileService, DocumentFileService>();
 
 // --- FIN DE LA CONFIGURATION JWT ---
 
-
+// --- Activer les détails d'erreurs en dev ---
+builder.Services.Configure<Microsoft.AspNetCore.Mvc.MvcOptions>(options =>
+{
+});
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var problemDetails = new ValidationProblemDetails(context.ModelState)
+        {
+            Status = StatusCodes.Status400BadRequest,
+            Title = "Erreur de validation",
+            Detail = "Voir les erreurs dans la propriété errors."
+        };
+        return new BadRequestObjectResult(problemDetails);
+    };
+});
 // Build après l'ajout de tous les services
 var app = builder.Build();
 // 🔧 Créer automatiquement le dossier uploads s'il n'existe pas
@@ -138,6 +160,8 @@ using (var scope = app.Services.CreateScope())
 // Swagger en développement uniquement
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
+    app.UseDeveloperExceptionPage();
+
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
