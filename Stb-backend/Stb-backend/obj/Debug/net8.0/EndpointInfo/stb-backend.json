@@ -1673,13 +1673,6 @@
             "minLength": 0,
             "type": "string"
           },
-          "emailConfirmed": {
-            "type": "boolean"
-          },
-          "emailVerificationToken": {
-            "type": "string",
-            "nullable": true
-          },
           "verificationToken": {
             "type": "string",
             "nullable": true
