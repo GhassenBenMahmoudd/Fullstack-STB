@@ -1,0 +1,4 @@
+/* Ajoute un peu d’espace */
+.navbar-nav .nav-item {
+  margin-left: 1rem;
+}

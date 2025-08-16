@@ -812,129 +812,92 @@
         }
       }
     },
-    "/api/DeclarationCorruption": {
-      "get": {
-        "tags": [
-          "DeclarationCorruption"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeclarationCorruption"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeclarationCorruption"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DeclarationCorruption"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
+    "/api/DeclarationCorruption/create-with-files": {
       "post": {
         "tags": [
           "DeclarationCorruption"
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/DeclarationCorruption"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeclarationCorruption"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/DeclarationCorruption"
+                "type": "object",
+                "properties": {
+                  "IdUser": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "ObjetSignalement": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "EntitesConcernees": {
+                    "type": "string"
+                  },
+                  "DateObservation": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "TypeDomaine": {
+                    "$ref": "#/components/schemas/TypeDomaine"
+                  },
+                  "Statut": {
+                    "$ref": "#/components/schemas/Statut"
+                  },
+                  "Anonyme": {
+                    "type": "boolean"
+                  },
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "IdUser": {
+                  "style": "form"
+                },
+                "ObjetSignalement": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "EntitesConcernees": {
+                  "style": "form"
+                },
+                "DateObservation": {
+                  "style": "form"
+                },
+                "TypeDomaine": {
+                  "style": "form"
+                },
+                "Statut": {
+                  "style": "form"
+                },
+                "Anonyme": {
+                  "style": "form"
+                },
+                "files": {
+                  "style": "form"
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCorruption"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCorruption"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCorruption"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
     },
     "/api/DeclarationCorruption/{id}": {
-      "get": {
-        "tags": [
-          "DeclarationCorruption"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCorruption"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCorruption"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeclarationCorruption"
-                }
-              }
-            }
-          }
-        }
-      },
       "put": {
         "tags": [
           "DeclarationCorruption"
@@ -954,17 +917,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeclarationCorruption"
+                "$ref": "#/components/schemas/DeclarationCorruptionCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeclarationCorruption"
+                "$ref": "#/components/schemas/DeclarationCorruptionCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DeclarationCorruption"
+                "$ref": "#/components/schemas/DeclarationCorruptionCreateDto"
               }
             }
           }
@@ -993,6 +956,44 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DeclarationCorruption"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruptionDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruptionDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeclarationCorruptionDto"
+                }
+              }
+            }
           }
         }
       }
@@ -1499,6 +1500,87 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DocumentFile"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeclarationCorruptionCreateDto": {
+        "type": "object",
+        "properties": {
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "objetSignalement": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "entitesConcernees": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateObservation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "typeDomaine": {
+            "$ref": "#/components/schemas/TypeDomaine"
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "anonyme": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeclarationCorruptionDto": {
+        "type": "object",
+        "properties": {
+          "idCorruption": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "idUser": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "objetSignalement": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "entitesConcernees": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateObservation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "typeDomaine": {
+            "$ref": "#/components/schemas/TypeDomaine"
+          },
+          "statut": {
+            "$ref": "#/components/schemas/Statut"
+          },
+          "anonyme": {
+            "type": "boolean"
+          },
+          "documentFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocumentFileDto"
             },
             "nullable": true
           }

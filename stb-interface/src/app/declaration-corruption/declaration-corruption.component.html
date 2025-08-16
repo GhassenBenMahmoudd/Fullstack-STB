@@ -1,0 +1,65 @@
+<div class="mb-3">
+  <label>Voulez-vous déclarer anonymement ?</label><br/>
+  <button type="button" class="btn btn-outline-primary me-2" (click)="chooseAnonyme(true)">Oui, anonyme</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="chooseAnonyme(false)">Non, je suis connecté</button>
+</div>
+
+<div *ngIf="chooseAnonymeMode !== null">
+
+  <form [formGroup]="createForm" (ngSubmit)="submit()">
+
+    <h2>Créer une déclaration de corruption</h2>
+
+    <div class="row mb-3">
+
+      <div class="col-md-2" *ngIf="!chooseAnonymeMode">
+        <label for="idUser" class="form-label">ID Utilisateur</label>
+        <input id="idUser" type="number" formControlName="idUser" class="form-control" readonly />
+      </div>
+
+      <div [class.col-md-7]="chooseAnonymeMode" [class.col-md-5]="!chooseAnonymeMode">
+        <label for="objetSignalement" class="form-label">Objet du signalement</label>
+        <input id="objetSignalement" type="text" formControlName="objetSignalement" class="form-control" placeholder="Objet du signalement" />
+      </div>
+
+      <div [class.col-md-5]="chooseAnonymeMode" [class.col-md-5]="!chooseAnonymeMode">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" formControlName="description" rows="2" class="form-control" placeholder="Description"></textarea>
+      </div>
+
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-5">
+        <label for="entitesConcernees" class="form-label">Entités concernées</label>
+        <input id="entitesConcernees" type="text" formControlName="entitesConcernees" class="form-control" placeholder="Entités concernées" />
+      </div>
+      <div class="col-md-3">
+        <label for="dateObservation" class="form-label">Date d'observation</label>
+        <input id="dateObservation" type="date" formControlName="dateObservation" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <label for="typeDomaine" class="form-label">Type de domaine</label>
+        <select id="typeDomaine" formControlName="typeDomaine" class="form-select">
+          <option value="">Sélectionnez</option>
+          <option *ngFor="let type of typesDomaines" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="files" class="form-label">Choisir des fichiers</label>
+      <input id="files" type="file" (change)="onFileSelected($event)" multiple class="form-control" />
+      <small *ngIf="selectedFiles.length === 0" class="text-muted">Aucun fichier sélectionné</small>
+      <ul *ngIf="selectedFiles.length > 0" class="list-unstyled mt-2">
+        <li *ngFor="let file of selectedFiles">{{ file.name }}</li>
+      </ul>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer</button>
+
+    <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+
+  </form>
+
+</div>

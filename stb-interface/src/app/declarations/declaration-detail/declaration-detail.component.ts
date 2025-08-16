@@ -12,7 +12,7 @@ import { DeclarationCadeau } from '../../models/declaration-cadeau.model';
   styleUrls: ['./declaration-detail.component.css']
 })
 export class DeclarationDetailComponent implements OnInit {
-  declaration?: DeclarationCadeau;
+declaration?: DeclarationCadeau ;
 
   constructor(
     private route: ActivatedRoute,

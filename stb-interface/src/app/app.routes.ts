@@ -7,6 +7,7 @@ import { DeclarationListComponent } from './components/declaration-list/declarat
 import { DeclarationDetailComponent } from './declarations/declaration-detail/declaration-detail.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { DeclarationCorruptionComponent } from './declaration-corruption/declaration-corruption.component';
 
 export const routes: Routes = [
   { 
@@ -42,6 +43,11 @@ export const routes: Routes = [
   path: 'declarations/view/:id',
   component: DeclarationDetailComponent
 },
+  { 
+    path: 'declaration-corruption',
+    component: DeclarationCorruptionComponent,
+    canActivate: [AuthGuard] // si tu veux la protéger
+  },
 
   // --- Redirections (toujours à la fin) ---
   { 

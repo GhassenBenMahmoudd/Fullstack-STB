@@ -6,9 +6,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http'; // <-- Et ceci
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes'; // Assurez-vous que le nom du fichier est correct
 import { AuthInterceptor } from './app/interceptors/auth.interceptor'; // <-- Importez votre intercepteur
+import { MatDialogModule } from '@angular/material/dialog';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    MatDialogModule,
     
     // 1. Fournir les routes de l'application
     provideRouter(routes ),

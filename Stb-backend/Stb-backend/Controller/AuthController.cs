@@ -147,7 +147,7 @@ namespace stb_backend.Controller
                     );
             }
 
-            if (baseUser == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, baseUser.Password))
+             if (baseUser == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, baseUser.Password))
             {
                 return Unauthorized(new { message = "Identifiants invalides." });
             }

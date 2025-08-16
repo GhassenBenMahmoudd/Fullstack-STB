@@ -1,0 +1,14 @@
+services:
+  stb-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stb-frontend
+    ports:
+      - "4200:80"
+    networks:
+      - stb-network
+
+networks:
+  stb-network:
+    driver: bridge

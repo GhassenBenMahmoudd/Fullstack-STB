@@ -541,3 +541,4 @@ C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\o
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\stb-backend.pdb
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\stb-backend.genruntimeconfig.cache
 C:\Users\ghassen\Downloads\fullstack-STB\fullstack-STB\Stb-backend\stb-backend\obj\Debug\net8.0\ref\stb-backend.dll
+D:\Fullstack-STB-v3\Stb-backend\stb-backend\bin\Debug\net8.0\BCrypt.Net-Next.dll

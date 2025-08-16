@@ -1,75 +1,73 @@
- <header>
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
 
-            <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand mr-lg-5" routerLink="/">
+        <img src="assets/img/logos/logo1.png" alt="Logo">
+      </a>
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+      <!-- Toggler -->
+      <button
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        class="navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-                    <!-- Brand -->
-                    <a class="navbar-brand mr-lg-5" href="index.html">
-                        <img src="assets/img/logos/logo1.png" alt="...">
-                    </a>
-                    <!-- End Brand -->
+      <!-- Collapse -->
+      <div id="navbarContent" class="collapse navbar-collapse">
 
-                    <!-- Toggler -->
-                    <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- End Toggler -->
+        <!-- Navigation -->
+        <ul class="navbar-nav align-items-lg-center ml-auto">
+          <li class="nav-item">
+            <a routerLink="/" class="nav-link">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a href="#avis" class="nav-link">Avis de concours</a>
+          </li>
+          <li class="nav-item">
+            <a href="#conditions" class="nav-link">Conditions</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/declarations" class="nav-link">Déclaration Cadeau</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/declaration-corruption" class="nav-link">Déclaration Corruption</a>
+          </li>
+          <li class="nav-item">
+            <a href="#participer" class="nav-link">Comment participer ?</a>
+          </li>
+        </ul>
 
-                    <!-- Collaps -->
-                    <div id="navbarContent" class="collapse navbar-collapse">
-
-                        <!-- Navigation -->
-                        <ul class="navbar-nav align-items-lg-center ml-auto">
-                            <li class="nav-item dropdown">
-                                <a routerLink="/" class="nav-link ">Accueil</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#avis"  class="nav-link ">Avis de concours</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#conditions"  class="nav-link">Conditions</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                 <a routerLink="/declarations" class="nav-link">Déclaration Cadeau</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#participer" class="nav-link ">Comment participer ?</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-                            <!-- Si l'utilisateur est connecté -->
-                            <li class="nav-item dropdown" *ngIf="isLoggedIn">
-                               <a
-                                    class="nav-link dropdown-toggle"
-                                    href="#"
-                                    role="button"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                    >
-                                    {{ userName }} {{ userPreNom }}
-                                    <br>Role : {{ userRole }}
-                                    </a>
-
-
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#" (click)="logout()">Se déconnecter</a>
-                                </div>
-                            </li>
-
-                            <!-- Sinon afficher le bouton de connexion -->
-                            <li class="nav-item mr-0" *ngIf="!isLoggedIn">
-                                <a class="btn btn-sm d-none d-lg-inline-block btn-recrutement ml-auto" routerLink="/login">Se connecter</a>
-                            </li>
-                        </ul>
-
-                        <!-- End Navigation -->
-
-                    </div>
-                    <!-- End Collaps -->
-
-                </nav>
-
+        <!-- Utilisateur -->
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          <li class="nav-item dropdown" *ngIf="isLoggedIn">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{ userName }} {{ userPreNom }}<br />
+              Role : {{ userRole }}
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" (click)="logout()">Se déconnecter</a>
             </div>
+          </li>
 
-        </header>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="btn btn-sm d-none d-lg-inline-block btn-recrutement ml-auto" routerLink="/login">Se connecter</a>
+          </li>
+        </ul>
+
+      </div>
+
+    </nav>
+  </div>
+</header>

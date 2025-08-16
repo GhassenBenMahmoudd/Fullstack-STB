@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';  // adapte le chemin
 
 @Component({
@@ -15,22 +15,30 @@ export class HeaderComponent implements OnInit {
   userPreNom = '';
   userRole = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user => {
-      this.isLoggedIn = !!user;
-      this.userName = user?.nom || '';
-      this.userPreNom = user?.prenom || '';
-      this.userRole = user?.role || '';
-    });
+  if (typeof window !== 'undefined') {
+    const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    if (user && user.token) {
+      this.isLoggedIn = true;
+      this.userName = user.name || 'Nom';
+      this.userPreNom = user.prenom || '';
+      this.userRole = user.role || 'Utilisateur';
+    }
   }
+}
+
 
   logout(): void {
-    this.authService.logout();
-    // Redirection après logout, par exemple :
-    window.location.href = '/';
-    // ou si tu as le Router, utilise router.navigateByUrl('/')
+    // Supprimer les données utilisateur stockées
+    localStorage.removeItem('currentUser');
+    this.isLoggedIn = false;
+    this.userName = '';
+    this.userPreNom = '';
+    this.userRole = '';
+
+    // Redirection vers la page de login ou accueil
+    this.router.navigate(['/login']);
   }
-  
 }
